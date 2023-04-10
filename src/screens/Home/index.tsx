@@ -23,6 +23,7 @@ import { carouselData } from "../../utils/carouselData";
 import Body from "../../components/texts/Body";
 import Button from "../../components/Button";
 import { useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 
 const carouselSlideWidth = Dimensions.get("window").width;
 
@@ -30,9 +31,12 @@ const Home = () => {
   const theme = useTheme();
   const [carouselIndex, setCarouselIndex] = useState(0);
 
+  const navigation = useNavigation();
+
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;
+
   };
 
   const [carouselRef, setCarouselRef] = useState<ScrollView | null>(null);
@@ -54,6 +58,7 @@ const Home = () => {
     });
     setCarouselIndex(index);
   }
+
 
   return (
     <SafeAreaView className="pt-8" style={temas.container}>
@@ -130,7 +135,7 @@ const Home = () => {
                   : "Próximo"
               }
               background={theme.colors.background.secondary}
-              onPress={() => navigate("Buscar")}
+              onPress={()=>navigate('Buscar')}
             />
           )}
 
