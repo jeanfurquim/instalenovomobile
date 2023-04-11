@@ -12,6 +12,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import Suporte from "../screens/Suporte";
 import SelectModelo from "../screens/SelectModelo";
+import CustomDrawer from "../components/CustomDrawer";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,12 +34,18 @@ const Routes: React.FC = () => {
         initialRouteName="Home"
         screenOptions={{
           headerTintColor: "white",
-
           headerStyle: {
             backgroundColor: cores.primary,
           },
+                   drawerActiveBackgroundColor: "#01011d",
+          drawerActiveTintColor: "#fff",
+          drawerInactiveTintColor: "#333",
+          drawerLabelStyle: {
+          fontSize: 13,
+          },
           headerTitle: () => <HeaderTitle />,
         }}
+        drawerContent={props =><CustomDrawer {...props} />}
       >
         <Drawer.Screen
           name="Home"
@@ -46,11 +53,16 @@ const Routes: React.FC = () => {
           options={{ headerShown: false }}
         />
         <Drawer.Screen name="Buscar" component={Buscar} />
-        <Drawer.Screen name="Suporte" component={Suporte} options={{
-         drawerItemStyle:{ height: 0}
-          
-        }} />
-        <Drawer.Screen name="Buscar Modelo" component={SelectModelo} />
+        <Drawer.Screen
+          name="Suporte"
+          component={Suporte}
+       
+        />
+        <Drawer.Screen name="Buscar Modelo" component={SelectModelo}
+             options={{
+              drawerItemStyle: { height: 0 },
+            }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );

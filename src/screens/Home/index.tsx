@@ -5,6 +5,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  ImageBackground,
 } from "react-native";
 import React, { useState } from "react";
 import eletricista from "../../assets/images/eletricista.png";
@@ -36,7 +37,6 @@ const Home = () => {
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;
-
   };
 
   const [carouselRef, setCarouselRef] = useState<ScrollView | null>(null);
@@ -59,93 +59,97 @@ const Home = () => {
     setCarouselIndex(index);
   }
 
-
   return (
     <SafeAreaView className="pt-8" style={temas.container}>
-      <View style={temas.containerCard}>
-        <Image source={eletricista} className="h-56 w-64" />
-        <View style={temas.textContainer}>
-          <Text
-            className="text-white text-center text-2xl"
-            style={text.headline}
-          >
-            ASSISTENTE TÉCNICO
-          </Text>
-          <Text
-            className="text-white text-center text-2xl"
-            style={text.headline}
-          >
-            VIRTUAL
-          </Text>
-        </View>
-        <View className="w-full">
-          <ScrollView
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            ref={(ref) => setCarouselRef(ref)}
-            onMomentumScrollEnd={(event) => {
-              const index = Math.round(
-                event.nativeEvent.contentOffset.x / carouselSlideWidth
-              );
-              setCarouselIndex(index);
-            }}
-          >
-            {carouselData.map((item) => {
-              return (
-                <CarouselSlide key={item.id} width={carouselSlideWidth}>
-                  <Text className="text-gray-400 text-center text-sm">
-                    {item.subtitle}
-                  </Text>
-                </CarouselSlide>
-              );
-            })}
-          </ScrollView>
-        </View>
-        <DotsWrapper>
-          <Dot
-            active={carouselIndex == 0}
-            onPress={() => handleCarouselSlideDot(0)}
-          />
-          <Dot
-            active={carouselIndex == 1}
-            onPress={() => handleCarouselSlideDot(1)}
-          />
-          <Dot
-            active={carouselIndex == 2}
-            onPress={() => handleCarouselSlideDot(2)}
-          />
-        </DotsWrapper>
-        <FooterWrapper>
-          {carouselIndex < 2 ? (
-            <Button
-              title={
-                carouselIndex === carouselData.length - 1
-                  ? "Iniciar"
-                  : "Próximo"
-              }
-              background={theme.colors.background.secondary}
-              onPress={handleCarouselSlide}
+      <ImageBackground
+        source={require("../../assets/images/background.jpg")}
+        className="p-0"
+      >
+        <View style={temas.containerCard}>
+          <Image source={eletricista} className="h-56 w-64" />
+          <View style={temas.textContainer}>
+            <Text
+              className="text-white text-center text-2xl"
+              style={text.headline}
+            >
+              ASSISTENTE TÉCNICO
+            </Text>
+            <Text
+              className="text-white text-center text-2xl"
+              style={text.headline}
+            >
+              VIRTUAL
+            </Text>
+          </View>
+          <View className="w-full">
+            <ScrollView
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              ref={(ref) => setCarouselRef(ref)}
+              onMomentumScrollEnd={(event) => {
+                const index = Math.round(
+                  event.nativeEvent.contentOffset.x / carouselSlideWidth
+                );
+                setCarouselIndex(index);
+              }}
+            >
+              {carouselData.map((item) => {
+                return (
+                  <CarouselSlide key={item.id} width={carouselSlideWidth}>
+                    <Text className="text-gray-400 text-center text-sm">
+                      {item.subtitle}
+                    </Text>
+                  </CarouselSlide>
+                );
+              })}
+            </ScrollView>
+          </View>
+          <DotsWrapper>
+            <Dot
+              active={carouselIndex == 0}
+              onPress={() => handleCarouselSlideDot(0)}
             />
-          ) : (
-            <Button
-              title={
-                carouselIndex === carouselData.length - 1
-                  ? "Iniciar"
-                  : "Próximo"
-              }
-              background={theme.colors.background.secondary}
-              onPress={()=>navigate('Buscar')}
+            <Dot
+              active={carouselIndex == 1}
+              onPress={() => handleCarouselSlideDot(1)}
             />
-          )}
+            <Dot
+              active={carouselIndex == 2}
+              onPress={() => handleCarouselSlideDot(2)}
+            />
+          </DotsWrapper>
+          <FooterWrapper>
+            {carouselIndex < 2 ? (
+              <Button
+                title={
+                  carouselIndex === carouselData.length - 1
+                    ? "Iniciar"
+                    : "Próximo"
+                }
+                background={theme.colors.background.secondary}
+                onPress={handleCarouselSlide}
+              />
+            ) : (
+              <Button
+                title={
+                  carouselIndex === carouselData.length - 1
+                    ? "Iniciar"
+                    : "Próximo"
+                }
+                background={theme.colors.background.secondary}
+                onPress={() => navigate("Buscar")}
+              />
+            )}
 
-          <Button
-            title="Instale Soft"
-            background="transparent"
-            icon={<Image source={icone} className="h-5 w-5" />}
-          />
-        </FooterWrapper>
-      </View>
+            <Button
+              title="Instale Soft"
+              background="transparent"
+              icon={<Image source={icone} className="h-5 w-5" />}
+            />
+          </FooterWrapper>
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 };

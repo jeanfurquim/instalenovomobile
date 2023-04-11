@@ -59,7 +59,7 @@ const temas = StyleSheet.create({
   containerCard:{
     width: "100%",
     height: "100%",
-    backgroundColor: cores.primary,
+
     borderRadius: 20,
     shadowColor: cores.secondary,
     shadowOffset: {

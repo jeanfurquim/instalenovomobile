@@ -7,8 +7,8 @@ import Footer from "../../components/Footer";
 
 const Buscar = () => {
   return (
-    <SafeAreaView className="pt-8" style={theme.container}>
-      <Text className="text-white text-2xl px-4 mt-2" style={text.headline}>
+    <SafeAreaView className="pt-2" style={theme.container}>
+      <Text className="text-white text-2xl px-4 mt-0" style={text.headline}>
         Buscar
       </Text>
       <ScrollView className="p-3">
