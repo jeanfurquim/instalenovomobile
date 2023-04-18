@@ -55,6 +55,14 @@ const temas = StyleSheet.create({
    padding:1
 
   },
+  containerBuscar:{
+    
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor: "#263238",
+    padding:1
+ 
+   },
 
   containerCard:{
     width: "100%",

@@ -22,6 +22,14 @@ const theme = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
+  containerBuscarProd: {
+    flex: 1,
+    backgroundColor: '#01010d',
+    padding: 16,
+    justifyContent: 'flex-start',
+    alignContent: 'center',
+
+  },
 });
 
 export { theme };

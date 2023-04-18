@@ -16,6 +16,7 @@ import {
   StarIcon,
 } from "react-native-heroicons/outline";
 import TopList from "../TopList";
+import { useNavigation } from "@react-navigation/native";
 
 const data = [
   {
@@ -31,6 +32,12 @@ const data = [
 ];
 
 const BuscarCard = () => {
+
+  const { navigate } = useNavigation<Nav>();
+  type Nav = {
+    navigate: (value: string) => void;
+  };
+  
   return (
     <>
       <ScrollView
@@ -42,6 +49,7 @@ const BuscarCard = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
+            onPress={() => navigate("BuscarProduto")}
               className="p-2 pl-6 items-center mx-4 space-x-2 pb-8 pt-4 bg-white m-2 w-25"
               activeOpacity={0.9}
             >

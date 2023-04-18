@@ -20,7 +20,7 @@ const Drawer = createDrawerNavigator();
 
 const HeaderTitle: React.FC = () => (
   <View className="flex-row justify-center items-center">
-    <Image source={icone} className="h-6 w-6 m-2" />
+    <Image source={icone} className="h-5 w-5 m-2" />
     <Text className="text-white text-lg m-2" style={text.footnote}>
       Instale Soft
     </Text>
@@ -37,15 +37,15 @@ const Routes: React.FC = () => {
           headerStyle: {
             backgroundColor: cores.primary,
           },
-                   drawerActiveBackgroundColor: "#01011d",
+          drawerActiveBackgroundColor: "#01011d",
           drawerActiveTintColor: "#fff",
           drawerInactiveTintColor: "#333",
           drawerLabelStyle: {
-          fontSize: 13,
+            fontSize: 13,
           },
           headerTitle: () => <HeaderTitle />,
         }}
-        drawerContent={props =><CustomDrawer {...props} />}
+        drawerContent={(props) => <CustomDrawer {...props} />}
       >
         <Drawer.Screen
           name="Home"
@@ -53,15 +53,13 @@ const Routes: React.FC = () => {
           options={{ headerShown: false }}
         />
         <Drawer.Screen name="Buscar" component={Buscar} />
+        <Drawer.Screen name="Suporte" component={Suporte} />
         <Drawer.Screen
-          name="Suporte"
-          component={Suporte}
-       
-        />
-        <Drawer.Screen name="Buscar Modelo" component={SelectModelo}
-             options={{
-              drawerItemStyle: { height: 0 },
-            }}
+          name="BuscarProduto"
+          component={BuscaProduto}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
         />
       </Drawer.Navigator>
     </NavigationContainer>

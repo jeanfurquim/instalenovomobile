@@ -9,3 +9,10 @@ export type ProductTop = {
   logo:string;
   ranking: number;
 };
+
+
+export type Category = {
+  id: number;
+  name: string;
+  image: string;
+};
