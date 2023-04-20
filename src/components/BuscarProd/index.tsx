@@ -8,10 +8,14 @@ import { API_URL, fetchCategory } from "../../services";
 import axios from "axios";
 import { Picker } from "@react-native-picker/picker";
 import { text } from "../../default_styles";
+import { theme } from "../../styled_themes/themes";
+import Button from "../../components/Button";
 
 const BuscarProd = () => {
   const [cat, setCat] = useState<SpringPage<Category>>();
-  const [selectedCategory, setSelectedCategory] = useState(["categoria"]);
+  const [selectedCategory, setSelectedCategory] = useState([
+    "Escolha uma Categoria ...",
+  ]);
   const [isFocus, setIsFocus] = useState(false);
 
   const { navigate } = useNavigation<Nav>();
@@ -26,8 +30,12 @@ const BuscarProd = () => {
 
   return (
     <View
-      style={{ backgroundColor: "gray" }}
-      className="w-[90%] h-[60%] rounded-2xl"
+      style={{
+        backgroundColor: "#0f0f0f",
+        borderWidth: 1.0,
+        borderColor: "#FFF",
+      }}
+      className="w-[90%] h-64  rounded-2xl px-4 justify-center"
     >
       <View>
         <Text
@@ -42,22 +50,25 @@ const BuscarProd = () => {
           selectedValue={selectedCategory}
           onValueChange={(itemValue) => setSelectedCategory(itemValue)}
           style={{
-            backgroundColor: "white",
             justifyContent: "center",
             alignSelf: "center",
             alignItems: "center",
-            width: "80%",
+            width: "100%",
+            height: "40%",
+            position: "relative",
+            backgroundColor: "#000",
+            marginBottom:10
           }}
-        
+          dropdownIconColor="#FFF"
         >
           <Picker.Item
             label="Escolha uma Categoria.."
             value="categoria"
             style={{
-              backgroundColor: "#263238",
+              backgroundColor: "#000",
               justifyContent: "center",
               color: "#FFF",
-       
+              fontSize: 12,
             }}
           />
           {cat?.content.map((c) => {
@@ -67,16 +78,25 @@ const BuscarProd = () => {
                 value={c.id}
                 key={c.id}
                 style={{
-                  backgroundColor: "#263238",
+                  backgroundColor: "#000",
                   color: "#FFF",
-                   fontSize: 12,
+                  fontSize: 12,
+                  fontWeight:"700"
                 }}
-                
               />
             );
           })}
         </Picker>
+        <View className="mt-2">
+        <Button
+          title="Buscar"
+          background={theme.colors.background.secondary}
+     
+        />
+        </View>
+      
       </View>
+  
     </View>
   );
 };

@@ -41,7 +41,7 @@ const BuscarCard = () => {
   return (
     <>
       <ScrollView
-        className="bg-black"
+        className=""
         contentContainerStyle={{ paddingBottom: 100 }} >
         <FlatList
           data={data}
@@ -76,7 +76,7 @@ const BuscarCard = () => {
         />
         <View className="mt-2">
          
-          <View style={{ paddingBottom: 10, backgroundColor: cores.primary }}>
+          <View style={{ paddingBottom: 10}}>
             <TopList />
           </View>
         </View>

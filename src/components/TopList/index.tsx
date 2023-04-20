@@ -24,8 +24,8 @@ const TopList = () => {
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
-        <Text className="font-bold text-white text-1xl" style={text.headline}>TOP PRODUTOS</Text>
-        <ArrowRightIcon color="#FF9C41" />
+        <Text className="font-bold text-white text-xl" style={text.headline}>TOP PRODUTOS</Text>
+        <ArrowRightIcon color="#FFF" size={36} />
       </View>
       <Text className="text-xs text-white px-4">Os Mais Vendidos</Text>
 

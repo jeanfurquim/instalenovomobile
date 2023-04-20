@@ -4,7 +4,7 @@ import { cores } from "../../default_styles";
 
 const theme = StyleSheet.create({
   container: {
-    backgroundColor: "#01010d",
+
     height: "100%",
   },
   containerBuscar: {
@@ -23,10 +23,8 @@ const theme = StyleSheet.create({
     justifyContent: "space-around",
   },
   containerBuscarProd: {
-    flex: 1,
-    backgroundColor: '#01010d',
-    padding: 16,
-    justifyContent: 'flex-start',
+    flex:1,
+    justifyContent: 'space-between',
     alignContent: 'center',
 
   },
