@@ -25,7 +25,7 @@ export type Products = {
 
 
 export type Category = {
-  id: String;
+  id: number;
   name: string;
   image: string;
 };

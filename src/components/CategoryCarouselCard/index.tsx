@@ -17,6 +17,7 @@ const CategoryCarouselCard = ({ categ }: Props) => {
     <TouchableOpacity
       className="bg-white mr-3 shadow  rounded-full"
       style={{ backgroundColor: "#db6401" }}
+      onPress={()=> navigation.navigate('Produto', {selectedCategory:categ.id})}
    
      
     >

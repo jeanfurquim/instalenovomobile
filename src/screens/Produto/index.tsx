@@ -48,15 +48,15 @@ const Produto = ({
       });
   }, [selectedCategory]);
 
-  const [category, setCatategory] = useState<Category>();
+  const [category, setCategory] = useState<Category>();
   useEffect(() => {
     axios
       .get(`${API_URL}/categoriesproducts/${selectedCategory}`)
       .then((resp) => {
         const data = resp.data;
-        setCatategory(data);
+        setCategory(data);
       });
-  }, []);
+  }, [selectedCategory]);
 
   const [cat, setCat] = useState<SpringPage<Category>>();
   useEffect(() => {
@@ -64,7 +64,7 @@ const Produto = ({
       const data = resp.data;
       setCat(data);
     });
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <SafeAreaView>

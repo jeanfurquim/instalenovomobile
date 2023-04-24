@@ -9,6 +9,7 @@ type Props = {
 const ProductCard = ({prod}:Props) => {
   return (
     <View>
+      
       <Text className='text-white'>{prod.name}</Text>
     </View>
   )
