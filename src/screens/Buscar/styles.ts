@@ -4,7 +4,6 @@ import { cores } from "../../default_styles";
 
 const theme = StyleSheet.create({
   container: {
-
     height: "100%",
   },
   containerBuscar: {
@@ -23,10 +22,9 @@ const theme = StyleSheet.create({
     justifyContent: "space-around",
   },
   containerBuscarProd: {
-    flex:1,
-    justifyContent: 'space-between',
-    alignContent: 'center',
-
+    flex: 1,
+    justifyContent: "space-between",
+    alignContent: "center",
   },
 });
 

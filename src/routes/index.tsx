@@ -13,6 +13,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Suporte from "../screens/Suporte";
 import SelectModelo from "../screens/SelectModelo";
 import CustomDrawer from "../components/CustomDrawer";
+import Produto from "../screens/Produto";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,8 +56,13 @@ const Routes: React.FC = () => {
         <Drawer.Screen name="Buscar" component={Buscar} />
         <Drawer.Screen name="Suporte" component={Suporte} />
         <Drawer.Screen
-          name="BuscarProduto"
+          name="Buscar Produto"
           component={BuscaProduto}
+       
+        />
+           <Drawer.Screen
+          name="Produto"
+          component={Produto}
           options={{
             drawerItemStyle: { height: 0 },
           }}

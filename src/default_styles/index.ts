@@ -39,6 +39,9 @@ const text = StyleSheet.create({
   subhead: {
     fontFamily: "Poppins_400Regular",
   },
+  carousel: {
+    fontFamily: "Poppins_700Bold",
+  },
 });
 
 const temas = StyleSheet.create({

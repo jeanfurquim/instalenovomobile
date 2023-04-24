@@ -19,7 +19,7 @@ const Buscar = () => {
         source={require("../../assets/images/backteste2.jpg")}
         className="p-0 w-full h-full"
       >
-        <Text className="text-white text-2xl px-4 mt-0" style={text.headline}>
+        <Text className="text-white text-2xl px-4 mt-3" style={text.headline}>
           Buscar
         </Text>
         <ScrollView className="p-3">
