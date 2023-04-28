@@ -28,9 +28,7 @@ import { theme } from "../../styled_themes/themes";
 const BuscaProduto = () => {
   const navigation = useNavigation<any>();
   const [cat, setCat] = useState<SpringPage<Category>>();
-  const [selectedCategory, setSelectedCategory] = useState([
-    "Escolha uma Categoria ...",
-  ]);
+  const [selectedCategory, setSelectedCategory] = useState();
   const [isFocus, setIsFocus] = useState(false);
 
   useEffect(() => {
@@ -38,6 +36,8 @@ const BuscaProduto = () => {
       setCat(category);
     });
   }, []);
+
+
 
   if (Platform.OS === "ios") {
     return (
@@ -102,9 +102,14 @@ const BuscaProduto = () => {
                       }}
                       style={{ color: "#FFF", height: 150 }}
                     >
+                      <Picker.Item
+                        label="Escolha uma categoria"
+                        value=""
+                      />
                       {cat?.content.map((c) => {
                         return (
                           <Picker.Item
+                                                     
                             label={`${c.name}`}
                             value={c.id}
                             key={c.id}
@@ -112,16 +117,25 @@ const BuscaProduto = () => {
                         );
                       })}
                     </Picker>
-
-                    <View className="mt-10 mb-6">
-                      <Button
-                        title="Buscar"
-                        background={theme.colors.background.secondary}
-                        onPress={() =>
-                          navigation.navigate("Produto", { selectedCategory })
-                        }
-                      />
-                    </View>
+                    {selectedCategory !== undefined ? (
+                      <View className="mt-10 mb-6">
+                        <Button
+                          title="Buscar"
+                          background={theme.colors.background.secondary}
+                          onPress={() =>
+                            navigation.navigate("Produto", { selectedCategory })
+                          }
+                        />
+                      </View>
+                    ) : (
+                      <View className="mt-10 mb-6">
+                        <Button
+                          title="Buscar"
+                          background={theme.colors.background.secondary}
+                          onPress={() => {}}
+                        />
+                      </View>
+                    )}
                   </View>
                 </View>
               </View>

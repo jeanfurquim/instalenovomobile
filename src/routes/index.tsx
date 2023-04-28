@@ -14,6 +14,7 @@ import Suporte from "../screens/Suporte";
 import SelectModelo from "../screens/SelectModelo";
 import CustomDrawer from "../components/CustomDrawer";
 import Produto from "../screens/Produto";
+import ProductDetails from "../components/ProductDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +64,13 @@ const Routes: React.FC = () => {
            <Drawer.Screen
           name="Produto"
           component={Produto}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
+        />
+             <Drawer.Screen
+          name="Produtos Detalhes"
+          component={ProductDetails}
           options={{
             drawerItemStyle: { height: 0 },
           }}

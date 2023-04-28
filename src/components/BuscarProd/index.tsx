@@ -85,7 +85,7 @@ const BuscarProd = ({id, name, image}:CategoryProps) => {
             <Button
               title="Buscar"
               background={theme.colors.background.secondary}
-              onPress={() =>navigate('Produto')}
+              onPress={() =>handlePress}
             />
           </View>
         </View>

@@ -64,61 +64,78 @@ const Produto = ({
       const data = resp.data;
       setCat(data);
     });
-  }, [selectedCategory]);
+  }, []);
 
   return (
-    <SafeAreaView>
-      <ImageBackground
-        source={require("../../assets/images/backteste2.jpg")}
-        className="p-0 w-full h-full"
-      >
-        <View className="mt-4">
-          <View
-            className="flex-row justify-between items-center"
-            style={{ backgroundColor: "#0F0F0F" }}
-          >
-            <Text className="text-lg text-white px-4 p-2" style={text.footnote}>
-              Outras categorias
-            </Text>
+    <>
+      <SafeAreaView className="flex-1">
+        <ImageBackground
+          source={require("../../assets/images/backteste2.jpg")}
+          className="p-0 w-full h-full"
+        >
+          <View className="mt-4">
+            <View
+              className="flex-row justify-between items-center"
+              style={{ backgroundColor: "#0F0F0F" }}
+            >
+              <Text
+                className="text-lg text-white px-4 p-2"
+                style={text.footnote}
+              >
+                Outras categorias
+              </Text>
 
-            <ArrowRightIcon color="#FFF" size={24} />
+              <ArrowRightIcon color="#FFF" size={24} />
+            </View>
+
+            <ScrollView
+              horizontal
+              contentContainerStyle={{
+                paddingHorizontal: 15,
+              }}
+              showsHorizontalScrollIndicator={false}
+              className="pt-2"
+            >
+              {/* Categorias*/}
+              {cat?.content.map((c) => (
+                <View key={c.id}>
+                  {c.id !== selectedCategory ? (
+                    <CategoryCarouselCard
+                      categ={{
+                        id: c.id,
+                        name: c.name,
+                        image: c.image,
+                      }}
+                    />
+                  ) : null}
+                </View>
+              ))}
+            </ScrollView>
           </View>
-
+          <View className="mt-4" style={{ backgroundColor: "#0F0F0F" }}>
+            <Text
+              className="text-white text-center text-lg"
+              style={text.headline}
+            >
+              {category?.name}
+            </Text>
+          </View>
           <ScrollView
-            horizontal
             contentContainerStyle={{
-              paddingHorizontal: 15,
+              paddingHorizontal: 5,
+              paddingBottom:100
             }}
             showsHorizontalScrollIndicator={false}
-            className="pt-2"
+            className="pt-0"
           >
-            {/* Categorias*/}
-            {cat?.content.map((c) => (
-              <View key={c.id}>
-                {c.id !== selectedCategory ? (
-                  <CategoryCarouselCard
-                    categ={{
-                      id: c.id,
-                      name: c.name,
-                      image: c.image,
-                    }}
-                  />
-                ) : null}
-              </View>
+            {page?.content.map((prod) => (
+              <ProductCard prod={prod} key={prod.productId} />
             ))}
           </ScrollView>
-        </View>
-        <View className="mt-4">
-          <Text className="text-white">{category?.name}</Text>
-        </View>
-        <ScrollView contentContainerStyle={{ marginTop: 16 }}>
-          {page?.content.map((prod) => (
-            <ProductCard prod={prod} key={prod.productId} />
-          ))}
-        </ScrollView>
-      </ImageBackground>
+        </ImageBackground>
+      </SafeAreaView>
       <Footer />
-    </SafeAreaView>
+    </>
   );
 };
 
