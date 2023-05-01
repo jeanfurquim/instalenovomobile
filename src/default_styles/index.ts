@@ -42,32 +42,33 @@ const text = StyleSheet.create({
   carousel: {
     fontFamily: "Poppins_700Bold",
   },
+  modal: {
+    fontFamily: "Poppins_400Regular",
+    letterSpacing: 0.5,
+    lineHeight: 22,
+  },
 });
 
 const temas = StyleSheet.create({
   containerSafe: {
-  backgroundColor: "#01010d",
-
+    backgroundColor: "#01010d",
   },
 
-  container:{
-   flex:1,
-   justifyContent:"center",
-   alignItems:"center",
-   backgroundColor: "#01010d",
-   padding:1
-
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#01010d",
+    padding: 1,
   },
-  containerBuscar:{
-    
-    justifyContent:"center",
-    alignItems:"center",
+  containerBuscar: {
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#263238",
-    padding:1
- 
-   },
+    padding: 1,
+  },
 
-  containerCard:{
+  containerCard: {
     width: "100%",
     height: "100%",
 
@@ -81,7 +82,6 @@ const temas = StyleSheet.create({
     shadowRadius: 3.84,
     alignItems: "center",
     justifyContent: "space-around",
-
   },
 
   textContainer: {
@@ -96,9 +96,8 @@ const temas = StyleSheet.create({
   },
 
   container2: {
-    flex:1,    
+    flex: 1,
     backgroundColor: "#01010d",
-
   },
 
   dot: {

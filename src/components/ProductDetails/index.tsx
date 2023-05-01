@@ -14,16 +14,23 @@ import React, { useState } from "react";
 import { ImageBackground } from "react-native";
 import { cores, text } from "../../default_styles";
 import Footer from "../Footer";
-import { minProductCarCat } from "../../utils/types";
+import {
+  ProductCar,
+  minModelCar,
+  minProductCarCat,
+  minProductPage,
+} from "../../utils/types";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 
 type Props = {
   route: {
     params: { prod: minProductCarCat };
   };
+  car: ProductCar;
 };
 
 const ProductDetails = ({ route }: Props) => {
@@ -34,13 +41,10 @@ const ProductDetails = ({ route }: Props) => {
   type Nav = {
     navigate: (value: string) => void;
   };
+  const navigation = useNavigation<any>();
 
-  const SIZES = {
-    // app dimensions
-    width,
-    height,
-  };
   const { prod } = route.params;
+
   return (
     <>
       <SafeAreaView>
@@ -49,12 +53,14 @@ const ProductDetails = ({ route }: Props) => {
           className="p-0 w-full h-full"
         >
           <View className="bg-white">
-            <View
-              className="w-8 h-8 items-center justify-center mt-2 ml-2 rounded-full"
-              style={{ backgroundColor: cores.secondary }}
-            >
-              <ArrowLeftIcon color="white" />
-            </View>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <View
+                className="w-8 h-8 items-center justify-center mt-2 ml-2 rounded-full"
+                style={{ backgroundColor: cores.secondary }}
+              >
+                <ArrowLeftIcon color="white" />
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View className="bg-white w-full h-2/5 items-center">
@@ -81,29 +87,29 @@ const ProductDetails = ({ route }: Props) => {
             >
               <View className="px-4">
                 <View className="flex-row mt-1">
-                  <Text className="text-gray-300 text-xl" style={text.footnote}>
+                  <Text className="text-gray-300 text-lg" style={text.footnote}>
                     Produto:
                   </Text>
                   <Text
-                    className="text-white text-xl mb-2 ml-3"
+                    className="text-white text-lg mb-2 ml-3 w-11/12"
                     style={text.headline}
                   >
                     {prod.name}
                   </Text>
                 </View>
                 <View className="flex-row mt-1">
-                  <Text className="text-gray-300 text-xl" style={text.footnote}>
+                  <Text className="text-gray-300 text-lg" style={text.footnote}>
                     Código:
                   </Text>
                   <Text
-                    className="text-white text-xl ml-3"
+                    className="text-white text-lg ml-3"
                     style={text.headline}
                   >
                     {prod.code}
                   </Text>
                 </View>
               </View>
-              <View className=" flex-row items-center self-center mt-8 w-[70%]">
+              <View className=" flex-row items-center self-center mt-8 w-[90%]">
                 <View className="mb-6">
                   <Button
                     title="Inf. Técnicas"
@@ -115,6 +121,12 @@ const ProductDetails = ({ route }: Props) => {
                   <Button
                     title="Modelos Compatíveis"
                     background={theme.colors.background.secondary}
+                    onPress={() =>
+                      navigation.navigate("Models", {
+                        productId: prod.productId,
+                        categoryId: prod.categoryId,
+                      })
+                    }
                   />
                 </View>
               </View>
@@ -132,23 +144,27 @@ const ProductDetails = ({ route }: Props) => {
                     height: "40%",
                     position: "absolute",
                     bottom: 0,
-      
                   }}
                 >
                   <TouchableOpacity onPress={() => setCatModal(!catModal)}>
-                    <View className="mb-5">
-                      <Text>Fechar</Text>
+                    <View className="w-10 h-10 justify-center self-center items-center mb-3 mt-2 rounded-full bg-black">
+                      <MaterialIcons name="close" size={36} color="white" />
                     </View>
                   </TouchableOpacity>
 
                   <ScrollView
-                   contentContainerStyle={{
-                    paddingHorizontal: 0,
-                    paddingBottom: 50,
-                  }}
-                  showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={{
+                      paddingHorizontal: 0,
+                      paddingBottom: 0,
+                    }}
+                    showsHorizontalScrollIndicator={false}
                   >
-                    <Text>{prod.description}</Text>
+                    <Text
+                      className="text-sm text-center p-2"
+                      style={text.modal}
+                    >
+                      {prod.description}
+                    </Text>
                   </ScrollView>
                 </View>
               </View>

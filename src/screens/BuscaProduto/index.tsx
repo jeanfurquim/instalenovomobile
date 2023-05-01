@@ -24,6 +24,7 @@ import { fetchCategory } from "../../services";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
+import { TouchableOpacity } from "react-native";
 
 const BuscaProduto = () => {
   const navigation = useNavigation<any>();
@@ -31,13 +32,16 @@ const BuscaProduto = () => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [isFocus, setIsFocus] = useState(false);
 
+  const { navigate } = useNavigation<Nav>();
+  type Nav = {
+    navigate: (value: string) => void;
+  };
+
   useEffect(() => {
     fetchCategory().then((category) => {
       setCat(category);
     });
   }, []);
-
-
 
   if (Platform.OS === "ios") {
     return (
@@ -55,12 +59,14 @@ const BuscaProduto = () => {
             className="p-0 w-full h-full"
           >
             <View className="flex-row flex-1 items-center mb-4 ml-4">
-              <View
-                className="w-7 h-7 items-center justify-center mt-4 rounded-full"
-                style={{ backgroundColor: cores.secondary }}
-              >
-                <ArrowLeftIcon color="white" />
-              </View>
+              <TouchableOpacity onPress={() => navigate("Buscar")}>
+                <View
+                  className="w-7 h-7 items-center justify-center mt-4 rounded-full"
+                  style={{ backgroundColor: cores.secondary }}
+                >
+                  <ArrowLeftIcon color="white" />
+                </View>
+              </TouchableOpacity>
 
               <Text
                 className="text-white ml-4 text-[18px] mt-4"
@@ -102,14 +108,10 @@ const BuscaProduto = () => {
                       }}
                       style={{ color: "#FFF", height: 150 }}
                     >
-                      <Picker.Item
-                        label="Escolha uma categoria"
-                        value=""
-                      />
+                      <Picker.Item label="Escolha uma categoria" value="" />
                       {cat?.content.map((c) => {
                         return (
                           <Picker.Item
-                                                     
                             label={`${c.name}`}
                             value={c.id}
                             key={c.id}
@@ -178,12 +180,14 @@ const BuscaProduto = () => {
             className="p-0 w-full h-full"
           >
             <View className="flex-row flex-1 items-center mb-4 ml-4">
-              <View
-                className="w-7 h-7 items-center justify-center mt-4 rounded-full"
-                style={{ backgroundColor: cores.secondary }}
-              >
-                <ArrowLeftIcon color="white" />
-              </View>
+              <TouchableOpacity onPress={() => navigate("Buscar")}>
+                <View
+                  className="w-7 h-7 items-center justify-center mt-4 rounded-full"
+                  style={{ backgroundColor: cores.secondary }}
+                >
+                  <ArrowLeftIcon color="white" />
+                </View>
+              </TouchableOpacity>
 
               <Text
                 className="text-white ml-4 text-[18px] mt-4"

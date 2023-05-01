@@ -15,6 +15,7 @@ import SelectModelo from "../screens/SelectModelo";
 import CustomDrawer from "../components/CustomDrawer";
 import Produto from "../screens/Produto";
 import ProductDetails from "../components/ProductDetails";
+import Model from "../screens/Model";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,7 @@ const Routes: React.FC = () => {
           headerTitle: () => <HeaderTitle />,
         }}
         drawerContent={(props) => <CustomDrawer {...props} />}
+        backBehavior="history"
       >
         <Drawer.Screen
           name="Home"
@@ -56,21 +58,24 @@ const Routes: React.FC = () => {
         />
         <Drawer.Screen name="Buscar" component={Buscar} />
         <Drawer.Screen name="Suporte" component={Suporte} />
+        <Drawer.Screen name="Buscar Produto" component={BuscaProduto} />
         <Drawer.Screen
-          name="Buscar Produto"
-          component={BuscaProduto}
-       
-        />
-           <Drawer.Screen
           name="Produto"
           component={Produto}
           options={{
             drawerItemStyle: { height: 0 },
           }}
         />
-             <Drawer.Screen
+        <Drawer.Screen
           name="Produtos Detalhes"
           component={ProductDetails}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
+        />
+        <Drawer.Screen
+          name="Models"
+          component={Model}
           options={{
             drawerItemStyle: { height: 0 },
           }}
