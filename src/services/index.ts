@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 export const API_URL = 'http://192.168.18.5:8080'
 //export const API_URL = 'http://192.168.15.181:8080'
@@ -14,3 +14,8 @@ export const fetchCategory = async () => {
     const response = await fetch(url);
     return await response.json();
 }
+
+export const requestBackend = (config: AxiosRequestConfig) => {
+
+    return axios({ ...config, baseURL: API_URL });
+  };
