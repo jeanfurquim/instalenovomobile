@@ -60,6 +60,7 @@ export type minModelCar = {
   montadora: string;
   categoryId: number;
   categoria: string;
+  productId:number;
   image: string;
 };
 

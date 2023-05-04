@@ -29,7 +29,7 @@ import { TouchableOpacity } from "react-native";
 const BuscaProduto = () => {
   const navigation = useNavigation<any>();
   const [cat, setCat] = useState<SpringPage<Category>>();
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [isFocus, setIsFocus] = useState(false);
 
   const { navigate } = useNavigation<Nav>();
@@ -119,7 +119,7 @@ const BuscaProduto = () => {
                         );
                       })}
                     </Picker>
-                    {selectedCategory !== undefined ? (
+                    {selectedCategory !== '' ? (
                       <View className="mt-10 mb-6">
                         <Button
                           title="Buscar"
@@ -259,15 +259,25 @@ const BuscaProduto = () => {
                         );
                       })}
                     </Picker>
-                    <View className="mt-1 mb-4">
-                      <Button
-                        onPress={() =>
-                          navigation.navigate("Produto", { selectedCategory })
-                        }
-                        title="Buscar"
-                        background={theme.colors.background.secondary}
-                      />
-                    </View>
+                    {selectedCategory !== '' ? (
+                      <View className="mt-1 mb-4">
+                        <Button
+                          onPress={() =>
+                            navigation.navigate("Produto", { selectedCategory })
+                          }
+                          title="Buscar"
+                          background={theme.colors.background.secondary}
+                        />
+                      </View>
+                    ) : (
+                      <View className="mt-1 mb-4">
+                        <Button
+                          onPress={() => {}}
+                          title="Buscar"
+                          background={theme.colors.background.secondary}
+                        />
+                      </View>
+                    )}
                   </View>
                 </View>
               </View>
