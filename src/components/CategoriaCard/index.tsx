@@ -81,7 +81,14 @@ const ModelCard = ({ category }: Props) => {
             <Button
               title="Saiba Mais"
               background={theme.colors.background.secondary}
-              onPress={() => {}}
+              onPress={() =>
+                navigation.navigate("Produtos Car", {
+                  modelId: category.modelId,
+                  categoryId: category.categoryId,
+                  vc: category.vc,
+                  combo:category.combo
+                })
+              }
             />
           </View>
         </View>
@@ -127,14 +134,28 @@ const ModelCard = ({ category }: Props) => {
                   <Button
                     title="2 Vidros"
                     background={theme.colors.background.secondary}
-                    onPress={() => setCatModal(!catModal)}
+                    onPress={() =>
+                      navigation.navigate("Produtos Car", {
+                        modelId: category.modelId,
+                        categoryId: category.categoryId,
+                        vc: category.vc,
+                        combo:category.combo
+                      })
+                    }
                   />
                 </View>
                 <View className="mt-2 mb-4 w-[40%] self-center">
                   <Button
                     title="4 Vidros"
                     background={theme.colors.background.secondary}
-                    onPress={() => setCatModal(!catModal)}
+                    onPress={() =>
+                      navigation.navigate("Produtos Car", {
+                        modelId: category.modelId,
+                        categoryId: category.categoryId,
+                        vc: category.vc,
+                        combo:category.combo
+                      })
+                    }
                   />
                 </View>
               </View>
@@ -144,14 +165,28 @@ const ModelCard = ({ category }: Props) => {
                   <Button
                     title="2 Portas"
                     background={theme.colors.background.secondary}
-                    onPress={() => setCatModal(!catModal)}
+                    onPress={() =>
+                      navigation.navigate("Produtos Car", {
+                        modelId: category.modelId,
+                        categoryId: category.categoryId,
+                        vc: category.vc,
+                        combo:category.combo
+                      })
+                    }
                   />
                 </View>
                 <View className="mt-2 mb-4 w-[40%] self-center">
                   <Button
                     title="4 Portas"
                     background={theme.colors.background.secondary}
-                    onPress={() => setCatModal(!catModal)}
+                    onPress={() =>
+                      navigation.navigate("Produtos Car", {
+                        modelId: category.modelId,
+                        categoryId: category.categoryId,
+                        vc: category.vc,
+                        combo:category.combo
+                      })
+                    }
                   />
                 </View>
               </View>

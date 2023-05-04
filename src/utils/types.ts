@@ -96,6 +96,20 @@ export type ProductCar = {
   nConvCombo: number;
 };
 
+
+export type ProductPage = {
+  content: ProductCar[];
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}
+
+
 export type minModelPage = {
   content: minModelCar[];
   last: boolean;

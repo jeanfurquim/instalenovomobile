@@ -17,6 +17,8 @@ import Produto from "../screens/Produto";
 import ProductDetails from "../components/ProductDetails";
 import Model from "../screens/Model";
 import Categoria from "../screens/Categoria";
+import ProductCard from "../screens/ProdCar";
+import ProdCard from "../screens/ProdCar";
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +90,14 @@ const Routes: React.FC = () => {
             drawerItemStyle: { height: 0 },
           }}
         />
+         <Drawer.Screen
+          name="Produtos Car"
+          component={ProdCard}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
+        />
+        
       </Drawer.Navigator>
     </NavigationContainer>
   );
