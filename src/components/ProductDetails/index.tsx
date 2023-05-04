@@ -9,14 +9,17 @@ import {
   Modal,
   Alert,
   TouchableOpacity,
+  Platform,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageBackground } from "react-native";
 import { cores, text } from "../../default_styles";
 import Footer from "../Footer";
 import {
   ProductCar,
   minModelCar,
+  minModelPage,
+  minModelPageAno,
   minProductCarCat,
   minProductPage,
 } from "../../utils/types";
@@ -25,6 +28,9 @@ import { theme } from "../../styled_themes/themes";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { Picker } from "@react-native-picker/picker";
+import axios from "axios";
+import { API_URL } from "../../services";
 
 type Props = {
   route: {

@@ -106,3 +106,27 @@ export type minModelPage = {
   numberOfElements: number;
   empty: boolean;
 }
+
+export type minModeloCarAno = {
+  mid: number;
+  name: string;
+  ano:string;
+  montadora: string;
+  categoryId: number;
+  categoria: string;
+  productId:number;
+  image:string;
+ 
+};
+
+export type minModelPageAno = {
+  content: minModeloCarAno[];
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}

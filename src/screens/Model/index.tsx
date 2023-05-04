@@ -8,8 +8,10 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
+  TextInput,
 } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
+
 import Footer from "../../components/Footer";
 import { cores, text } from "../../default_styles";
 import {
@@ -31,6 +33,7 @@ import { Picker } from "@react-native-picker/picker";
 import { Platform } from "react-native";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
+import SearchInput from "../../components/SearchInput";
 
 type Props = {
   route: {
@@ -48,19 +51,21 @@ const Model = ({ route }: Props) => {
   const [catModalName, setCatModalName] = useState(false);
   const [selectedMontadora, setSelectedMontadora] =
     useState("Todas montadoras");
+  const [search, setSearch] = useState("");
 
   const [page, setPage] = useState<minModelPage>({
     content: [],
     last: true,
     totalPages: 0,
     totalElements: 0,
-    size: 12,
+    size: 999,
     number: 0,
     first: true,
     numberOfElements: 0,
     empty: true,
   });
 
+  
   async function listModels() {
     const res = await axios.get(
       `${API_URL}/productscar/carporcat?productId=${productId}&categoryId=${categoryId}&size=${perPage}`
@@ -82,6 +87,17 @@ const Model = ({ route }: Props) => {
   useEffect(() => {
     listFilter();
   }, [selectedMontadora]);
+
+  async function listFilterName() {
+    const res = await axios.get(
+      `${API_URL}/productscar/params?name=${search}&productId=${productId}&categoryId=${categoryId}&size=${perPage}`
+    );
+    setModelo(res.data.content);
+  }
+
+  useEffect(() => {
+    listFilterName();
+  }, [search]);
 
   useEffect(() => {
     axios.get(`${API_URL}/products/${productId}`).then((resp) => {
@@ -111,6 +127,8 @@ const Model = ({ route }: Props) => {
   }, [getMan]);
 
   const navigation = useNavigation<any>();
+
+
 
   return (
     <>
@@ -303,16 +321,35 @@ const Model = ({ route }: Props) => {
               style={{
                 backgroundColor: "#0F0F0F",
                 width: "100%",
-                height: "20%",
+                height: "35%",
                 position: "absolute",
                 bottom: 0,
               }}
             >
-                 <TouchableOpacity onPress={() => setCatModalName(!catModalName)}>
+              <TouchableOpacity onPress={() => setCatModalName(!catModalName)}>
                 <View className="w-10 h-10 justify-center self-center items-center mb-1 mt-2 rounded-full bg-black">
                   <MaterialIcons name="close" size={22} color="white" />
                 </View>
               </TouchableOpacity>
+              <View className="flex-row justify-around items-center p-1">
+                <View className="w-[70%]">
+                  <SearchInput
+                    placeholder="Nome do modelo"
+                    search={search}
+                    setSearch={setSearch}
+                    
+                  />
+                </View>
+                <TouchableOpacity
+                onPress={()=>setSearch('')}
+                >
+                  <View>
+                    <Text className="text-white text-lg" style={text.headline}>
+                      Limpar
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </Modal>

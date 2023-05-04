@@ -233,6 +233,16 @@ const BuscaProduto = () => {
                       }}
                       dropdownIconColor="#FFF"
                     >
+                      <Picker.Item
+                        label="Escolha uma categoria"
+                        value=""
+                        style={{
+                          backgroundColor: "#000",
+                          color: "#FFF",
+                          fontSize: 12,
+                          fontWeight: "700",
+                        }}
+                      />
                       {cat?.content.map((c) => {
                         return (
                           <Picker.Item
