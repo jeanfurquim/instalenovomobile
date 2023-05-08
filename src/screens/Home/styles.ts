@@ -51,6 +51,17 @@ export const Dot = styled.TouchableOpacity<DotsProps>`
       : props.theme.colors.background.tertiary};
 `;
 
+export const DotProd = styled.TouchableOpacity<DotsProps>`
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  margin: 0px ${(props) => props.theme.spaces.space2};
+  background: ${(props) =>
+    props.active
+      ? props.theme.colors.background.secondary
+      : props.theme.colors.background.tertiary};
+`;
+
 interface CarouselSlidesProps {
   width: number;
 }

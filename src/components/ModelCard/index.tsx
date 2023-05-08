@@ -98,7 +98,7 @@ const ModelCard = ({ modelCar }: Props) => {
         style={{ backgroundColor: "#db6401" }}
       >
         <Text className="text-sm text-white p-3" style={text.headline}>
-          Ver Produtos
+          Ver + Produtos
         </Text>
       </View>
       <Modal animationType="slide" transparent={true} visible={catModal}>

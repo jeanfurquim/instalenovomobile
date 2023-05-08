@@ -138,7 +138,7 @@ const ModelCard = ({ category }: Props) => {
                       navigation.navigate("Produtos Car", {
                         modelId: category.modelId,
                         categoryId: category.categoryId,
-                        vc: category.vc,
+                        vc: 2,
                         combo:category.combo
                       })
                     }
@@ -152,7 +152,7 @@ const ModelCard = ({ category }: Props) => {
                       navigation.navigate("Produtos Car", {
                         modelId: category.modelId,
                         categoryId: category.categoryId,
-                        vc: category.vc,
+                        vc: 4,
                         combo:category.combo
                       })
                     }
@@ -169,7 +169,7 @@ const ModelCard = ({ category }: Props) => {
                       navigation.navigate("Produtos Car", {
                         modelId: category.modelId,
                         categoryId: category.categoryId,
-                        vc: category.vc,
+                        vc: 2,
                         combo:category.combo
                       })
                     }
@@ -183,7 +183,7 @@ const ModelCard = ({ category }: Props) => {
                       navigation.navigate("Produtos Car", {
                         modelId: category.modelId,
                         categoryId: category.categoryId,
-                        vc: category.vc,
+                        vc: 4,
                         combo:category.combo
                       })
                     }

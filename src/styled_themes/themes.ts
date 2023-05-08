@@ -8,6 +8,7 @@ declare module "styled-components" {
           primary: string;
           secondary: string;
           tertiary: string;
+          red:string
         };
         system: {
           primary: string;
@@ -75,6 +76,7 @@ declare module "styled-components" {
         primary: "#01011d",
         secondary: "#db6401",
         tertiary: "#2D344B",
+        red:"#EA0000"
       },
   
       system: {
