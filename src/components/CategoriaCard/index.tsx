@@ -34,11 +34,11 @@ const ModelCard = ({ category }: Props) => {
   const navigation = useNavigation<any>();
 
   return (
-    <TouchableOpacity
+    <View
       className="mt-4 mb-4 ml-3 justify-center items-center self-center w-40  bg-white shadow-lg"
       style={{ elevation: 10 }}
-      activeOpacity={0.7}
-      onPress={() => setCatModal(!catModal)}
+    
+    
     >
       <View
         className="flex-row justify-center p-1 self-center items-center mt-2"
@@ -89,6 +89,7 @@ const ModelCard = ({ category }: Props) => {
                   combo:category.combo
                 })
               }
+              
             />
           </View>
         </View>
@@ -140,7 +141,7 @@ const ModelCard = ({ category }: Props) => {
                         categoryId: category.categoryId,
                         vc: 2,
                         combo:category.combo
-                      })
+                      },  setCatModal(!catModal))
                     }
                   />
                 </View>
@@ -154,7 +155,7 @@ const ModelCard = ({ category }: Props) => {
                         categoryId: category.categoryId,
                         vc: 4,
                         combo:category.combo
-                      })
+                      },  setCatModal(!catModal))
                     }
                   />
                 </View>
@@ -194,7 +195,7 @@ const ModelCard = ({ category }: Props) => {
           </View>
         </View>
       </Modal>
-    </TouchableOpacity>
+    </View>
   );
 };
 

@@ -1,5 +1,6 @@
 export type ProductTop = {
   id: number;
+  productId: number;
   name: string;
   urlImg: string;
   code: string;
@@ -144,4 +145,29 @@ export type minModelPageAno = {
   first: boolean;
   numberOfElements: number;
   empty: boolean;
+}
+
+export type Manufacturer={
+  id:number;
+  name:string;
+  urlImg:string;
+}
+
+export type minModelCarAno = {
+  content: Model[];
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+  first: boolean;
+  numberOfElements: number;
+  empty: boolean;
+}
+
+export type Model={
+  mid: number;
+  name: string;
+  year:number;
+  manufacturerName: number;
 }

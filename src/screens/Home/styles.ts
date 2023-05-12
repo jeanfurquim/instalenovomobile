@@ -52,8 +52,8 @@ export const Dot = styled.TouchableOpacity<DotsProps>`
 `;
 
 export const DotProd = styled.TouchableOpacity<DotsProps>`
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   border-radius: 100px;
   margin: 0px ${(props) => props.theme.spaces.space2};
   background: ${(props) =>

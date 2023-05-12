@@ -6,6 +6,7 @@ import {
   ImageBackground,
   ScrollView,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import BottomTabs from "../../components/BottomTabs";
@@ -24,12 +25,11 @@ import { fetchCategory } from "../../services";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
-import { TouchableOpacity } from "react-native";
 
 const BuscaProduto = () => {
   const navigation = useNavigation<any>();
   const [cat, setCat] = useState<SpringPage<Category>>();
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [isFocus, setIsFocus] = useState(false);
 
   const { navigate } = useNavigation<Nav>();
@@ -119,8 +119,8 @@ const BuscaProduto = () => {
                         );
                       })}
                     </Picker>
-                    {selectedCategory !== '' ? (
-                      <View className="mt-10 mb-6">
+                    {selectedCategory !== "" ? (
+                      <View className="mt-10 mb-10">
                         <Button
                           title="Buscar"
                           background={theme.colors.background.secondary}
@@ -141,15 +141,16 @@ const BuscaProduto = () => {
                   </View>
                 </View>
               </View>
-              <View
+              <TouchableOpacity
                 className="mt-4 flex-row justify-center items-center mb-2"
                 style={{ backgroundColor: "#0F0F0F" }}
+                onPress={() => navigate("Buscar Modelo")}
+                activeOpacity={0.6}
               >
                 <Text
                   className="text-white text-center mr-2 text-sm"
                   style={text.headline}
                 >
-                  {" "}
                   Busque também por
                 </Text>
                 <MaterialCommunityIcons
@@ -157,7 +158,7 @@ const BuscaProduto = () => {
                   size={36}
                   color="#FFF"
                 />
-              </View>
+              </TouchableOpacity>
             </ScrollView>
           </ImageBackground>
         </SafeAreaView>
@@ -259,7 +260,7 @@ const BuscaProduto = () => {
                         );
                       })}
                     </Picker>
-                    {selectedCategory !== '' ? (
+                    {selectedCategory !== "" ? (
                       <View className="mt-1 mb-4">
                         <Button
                           onPress={() =>
@@ -281,9 +282,11 @@ const BuscaProduto = () => {
                   </View>
                 </View>
               </View>
-              <View
+              <TouchableOpacity
                 className="mt-4 flex-row justify-center items-center mb-2"
                 style={{ backgroundColor: "#0F0F0F" }}
+                onPress={() => navigate("Buscar Modelo")}
+                activeOpacity={0.6}
               >
                 <Text
                   className="text-white text-center mr-2 text-sm"
@@ -297,7 +300,7 @@ const BuscaProduto = () => {
                   size={36}
                   color="#FFF"
                 />
-              </View>
+              </TouchableOpacity>
             </ScrollView>
           </ImageBackground>
         </SafeAreaView>

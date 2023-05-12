@@ -8,8 +8,8 @@ import {
   ScrollView,
   Modal,
 } from "react-native";
-import React, { useState } from "react";
-import { ProductCar } from "../../utils/types";
+import React, { useEffect, useState } from "react";
+import { ProductCar, ProductPage } from "../../utils/types";
 import { text } from "../../default_styles";
 import {
   MaterialIcons,
@@ -20,6 +20,8 @@ import {
 
 import Button from "../Button";
 import { theme } from "../../styled_themes/themes";
+import axios from "axios";
+import { API_URL } from "../../services";
 
 type Props = {
   prodCar: ProductCar;
@@ -28,6 +30,29 @@ type Props = {
 const ProductCarCard = ({ prodCar }: Props) => {
   const [catModal, setCatModal] = useState(false);
   const [catModalAlerta, setCatModalAlerta] = useState(false);
+  const [comb, setCombo] = useState<ProductPage>({
+    content: [],
+    last: true,
+    totalPages: 0,
+    totalElements: 0,
+    size: 1,
+    number: 0,
+    first: true,
+    numberOfElements: 0,
+    empty: false,
+  });
+  useEffect(() => {
+    axios
+      .get(
+        `${API_URL}/productscar/prodcategcombo?modelId=${
+          prodCar.modelId
+        }&categoryId=${prodCar.categoryId}&combo=${prodCar.combo + 1}`
+      )
+      .then((response) => {
+        const data = response.data as ProductPage;
+        setCombo(data);
+      });
+  }, [prodCar.categoryId, prodCar.modelId, prodCar.combo]);
 
   return (
     <View className="bg-white justify-center items-center  self-center w-full">
@@ -55,6 +80,17 @@ const ProductCarCard = ({ prodCar }: Props) => {
           </Text>
         </View>
       </View>
+
+      {prodCar.combo !== null && prodCar.nConvCombo === null ? (
+        <View className="mb-4 p-2" style={{backgroundColor:'#ee9f27'}}>
+          {comb.content.map((c) => (
+            <View key={c.id}>
+              <Text className="text-white font-bold"style={text.headline}>Adicionar {c.productName} --></Text>
+               
+            </View>
+          ))}
+        </View>
+      ) : null}
 
       <View className="flex-row justify-evenly ">
         {prodCar.manualSec !== "" ? (
@@ -191,17 +227,23 @@ const ProductCarCard = ({ prodCar }: Props) => {
               bottom: 0,
             }}
           >
-            <TouchableOpacity onPress={() => setCatModalAlerta(!catModalAlerta)}>
+            <TouchableOpacity
+              onPress={() => setCatModalAlerta(!catModalAlerta)}
+            >
               <View className="w-10 h-10 justify-center self-center items-center mb-1 mt-2 rounded-full bg-black">
                 <MaterialIcons name="close" size={36} color="white" />
               </View>
             </TouchableOpacity>
             <ScrollView
-             contentContainerStyle={{ paddingBottom: 50 }}
-             className="mt-1 self-center"
-             
+              contentContainerStyle={{ paddingBottom: 50 }}
+              className="mt-1 self-center"
             >
-              <Text style={text.headline} className="text-white text-center text-lg">{prodCar.observation}</Text>
+              <Text
+                style={text.headline}
+                className="text-white text-center text-lg"
+              >
+                {prodCar.observation}
+              </Text>
             </ScrollView>
           </View>
         </View>

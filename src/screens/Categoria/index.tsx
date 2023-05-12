@@ -7,7 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Footer from "../../components/Footer";
 import { SpringPage } from "../../services/spring";
 import { ProductCar } from "../../utils/types";
@@ -27,6 +27,7 @@ type Props = {
 const Categoria = ({ route }: Props) => {
   const [category, setCategory] = useState<ProductCar>();
   const { selectedAno } = route.params;
+
   const navigation = useNavigation<any>();
 
   function removeDuplicates(data: any, prop: any) {
@@ -52,6 +53,7 @@ const Categoria = ({ route }: Props) => {
   }
 
   useEffect(() => {
+    
     listCategory();
   }, [selectedAno]);
 

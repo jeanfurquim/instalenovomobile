@@ -19,6 +19,7 @@ import Model from "../screens/Model";
 import Categoria from "../screens/Categoria";
 import ProductCard from "../screens/ProdCar";
 import ProdCard from "../screens/ProdCar";
+import BuscaModelo from "../screens/BuscaModelo";
 
 const Stack = createNativeStackNavigator();
 
@@ -60,8 +61,8 @@ const Routes: React.FC = () => {
           options={{ headerShown: false }}
         />
         <Drawer.Screen name="Buscar" component={Buscar} />
-        <Drawer.Screen name="Suporte" component={Suporte} />
         <Drawer.Screen name="Buscar Produto" component={BuscaProduto} />
+        <Drawer.Screen name="Buscar Modelo" component={BuscaModelo} />
         <Drawer.Screen
           name="Produto"
           component={Produto}
@@ -83,21 +84,20 @@ const Routes: React.FC = () => {
             drawerItemStyle: { height: 0 },
           }}
         />
-         <Drawer.Screen
+        <Drawer.Screen
           name="Categorias"
           component={Categoria}
           options={{
             drawerItemStyle: { height: 0 },
           }}
         />
-         <Drawer.Screen
+        <Drawer.Screen
           name="Produtos Car"
           component={ProdCard}
           options={{
             drawerItemStyle: { height: 0 },
           }}
         />
-        
       </Drawer.Navigator>
     </NavigationContainer>
   );

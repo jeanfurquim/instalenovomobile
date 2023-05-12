@@ -87,18 +87,86 @@ const ProdCard = ({ route }: Props) => {
             <View
               style={{
                 flexDirection: "row",
-                marginBottom: 20,
+                marginBottom: 0,
                 marginTop: 10,
               }}
             >
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                className="w-8 h-8 ml-2 justify-center self-center rounded-full"
-                style={{ backgroundColor: cores.secondary }}
-              >
-                <ArrowLeftIcon color="white" size={32} />
-              </TouchableOpacity>
+              {product.totalElements > 1 ? (
+                <TouchableOpacity
+                  onPress={() => navigation.goBack()}
+                  className="w-8 h-8 ml-4 justify-center self-center rounded-full"
+                  style={{ backgroundColor: cores.secondary }}
+                >
+                  <ArrowLeftIcon color="white" size={32} />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => navigation.goBack()}
+                  className="w-8 h-8 mb-5 ml-4 justify-center self-center rounded-full"
+                  style={{ backgroundColor: cores.secondary }}
+                >
+                  <ArrowLeftIcon color="white" size={32} />
+                </TouchableOpacity>
+              )}
             </View>
+
+            {product.totalElements > 1 ? (
+              <DotsWrapper className="items-center self-center mb-3">
+                {product.totalElements > 0 ? (
+                  <DotProd
+                    active={carouselIndex == 0}
+                    onPress={() => handleCarouselSlideDot(0)}
+                  />
+                ) : null}
+
+                {product.totalElements > 1 ? (
+                  <DotProd
+                    active={carouselIndex == 1}
+                    onPress={() => handleCarouselSlideDot(1)}
+                  />
+                ) : null}
+                {product.totalElements > 2 ? (
+                  <DotProd
+                    active={carouselIndex == 2}
+                    onPress={() => handleCarouselSlideDot(2)}
+                  />
+                ) : null}
+                {product.totalElements > 3 ? (
+                  <DotProd
+                    active={carouselIndex == 3}
+                    onPress={() => handleCarouselSlideDot(3)}
+                  />
+                ) : null}
+                {product.totalElements > 4 ? (
+                  <DotProd
+                    active={carouselIndex == 4}
+                    onPress={() => handleCarouselSlideDot(4)}
+                  />
+                ) : null}
+                {product.totalElements > 5 ? (
+                  <DotProd
+                    active={carouselIndex == 5}
+                    onPress={() => handleCarouselSlideDot(5)}
+                  />
+                ) : null}
+                {product.totalElements > 6 ? (
+                  <DotProd
+                    active={carouselIndex == 6}
+                    onPress={() => handleCarouselSlideDot(6)}
+                  />
+                ) : null}
+              </DotsWrapper>
+            ) : null}
+            {product.totalElements > 1 ? (
+              <View className="bg-black justify-center self-center items-center w-[80%]">
+                <Text
+                  className=" text-white font-bold mb-1"
+                  style={text.footnote}
+                >
+                  Deslize a tela para o lado
+                </Text>
+              </View>
+            ) : null}
 
             <ScrollView
               horizontal
@@ -120,49 +188,6 @@ const ProdCard = ({ route }: Props) => {
                 );
               })}
             </ScrollView>
-
-            {product.totalElements> 1 ? (
-              <DotsWrapper className="items-center self-center mt-6">
-                  {product.totalElements > 0 ? (
-                <DotProd
-                  active={carouselIndex == 0}
-                  onPress={() => handleCarouselSlideDot(0)}
-                /> ) : null}
-
-                      {product.totalElements > 1 ? (
-                <DotProd
-                  active={carouselIndex == 1}
-                  onPress={() => handleCarouselSlideDot(1)}
-                /> ) : null}
-                      {product.totalElements > 2 ? (
-                <DotProd
-                  active={carouselIndex == 2}
-                  onPress={() => handleCarouselSlideDot(2)}
-                /> ) : null}
-                      {product.totalElements>  3 ? (
-                <DotProd
-                  active={carouselIndex == 3}
-                  onPress={() => handleCarouselSlideDot(3)}
-                /> ) : null}
-                      {product.totalElements>  4 ? (
-                <DotProd
-                  active={carouselIndex == 4}
-                  onPress={() => handleCarouselSlideDot(4)}
-                /> ) : null}
-                      {product.totalElements>  5 ? (
-                <DotProd
-                  active={carouselIndex == 5}
-                  onPress={() => handleCarouselSlideDot(5)}
-                /> ) : null}
-                      {product.totalElements>  6 ? (
-                <DotProd
-                  active={carouselIndex == 6}
-                  onPress={() => handleCarouselSlideDot(6)}
-                /> ) : null}
-                
-              
-              </DotsWrapper>
-            ) : null}
           </ScrollView>
         </ImageBackground>
       </SafeAreaView>

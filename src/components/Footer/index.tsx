@@ -1,6 +1,13 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+  Linking,
+} from "react-native";
 import React from "react";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons, Entypo, FontAwesome } from "@expo/vector-icons";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,29 +20,53 @@ const Footer = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View className="justify-center items-center ">
+    <View
+      style={Platform.OS === "android" ? styles.container : styles.containerIos}
+    >
+      <TouchableOpacity
+        className="justify-center items-center"
+        onPress={() => navigate("Home")}
+        activeOpacity={0.6}
+      >
+        <Entypo name="home" size={22} color="#FFF" />
+        <Text className="text-white">Home</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        className="justify-center items-center self-center"
+        onPress={() => navigate("Buscar")}
+        activeOpacity={0.6}
+      >
         <Ionicons name="search" size={22} color="#FFF" />
         <Text className="text-white">Buscar</Text>
-      </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        className="justify-center items-center self-center"
+        onPress={() => navigate("Buscar Modelo")}
+        activeOpacity={0.6}
+      >
+        <FontAwesome name="car" size={22} color="#FFF" />
+        <Text className="text-white">Modelos</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         className="justify-center items-center"
-        onPress={() => navigate('Home')}
+        onPress={() => navigate("Buscar Produto")}
+        activeOpacity={0.6}
       >
-        <Ionicons name="wallet-outline" size={22} color="#FFF" />
-        <Text className="text-white">Teste</Text>
+        <Feather name="box" size={22} color="#FFF" />
+        <Text className="text-white">Produtos</Text>
       </TouchableOpacity>
 
-      <View>
-        <Feather name="bar-chart-2" size={22} color="#FFF" />
-        <Text className="text-white">Teste</Text>
-      </View>
-
-      <View className="justify-center items-center">
+      <TouchableOpacity
+        className="justify-center items-center"
+        onPress={() => Linking.openURL("https://wa.me/554135448500")}
+        activeOpacity={0.6}
+      >
         <Ionicons name="logo-whatsapp" size={22} color="#FFF" />
         <Text className="text-white">Suporte</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

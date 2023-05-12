@@ -23,11 +23,13 @@ const data = [
     id: "1",
     title: "Modelos",
     image: "http://www.instalesoft.com.br/imagens/icons/iconCar.png",
+    route:'Buscar Modelo'
   },
   {
     id: "2",
     title: "Produtos",
     image: "http://www.instalesoft.com.br/imagens/produtos/aw533mob.jpg",
+    route:'Buscar Produto'
   },
 ];
 
@@ -51,7 +53,7 @@ const BuscarCard = () => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
-            onPress={() => navigate("Buscar Produto")}
+            onPress={() => navigate(`${item.route}`)}
               className="p-2 pl-6 items-center mx-4 space-x-2 pb-8 pt-4 bg-white m-2 w-25"
               activeOpacity={0.9}
             >

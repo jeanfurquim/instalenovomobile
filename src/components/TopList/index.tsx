@@ -43,6 +43,7 @@ const TopList = () => {
           key={produto.id}
             prod={{
               id: produto.id,
+              productId: produto.productId,
               name: produto.name,
               urlImg: produto.urlImg,
               code:produto.code,
