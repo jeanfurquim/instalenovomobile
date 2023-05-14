@@ -26,6 +26,22 @@ const styles = StyleSheet.create({
     bottom: 0,
     elevation: 15,
   },
+  pill: {
+    paddingHorizontal: 15,
+    paddingVertical: 15,
+    backgroundColor: '#000',
+    borderRadius: 30,
+  },
+  pillActive: {
+    backgroundColor: "#FFF",
+  },
+  pillText: {
+    
+    color: "#FFF",
+  },
+  pillTextActive: {
+    color: "#000",
+  },
 });
 
 export default styles;

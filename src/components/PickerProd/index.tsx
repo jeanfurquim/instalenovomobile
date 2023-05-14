@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View, Modal, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Dropdown } from "react-native-element-dropdown";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Category } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
-import { API_URL, fetchCategory } from "../../services";
-import axios from "axios";
+import { fetchCategory } from "../../services";
 import { Picker } from "@react-native-picker/picker";
 import { text } from "../../default_styles";
 import { Alert } from "react-native/Libraries/Alert/Alert";
@@ -58,7 +56,6 @@ const PickerProd = () => {
           <View
             style={{
               flex: 1,
-     
             }}
           >
             <View

@@ -7,30 +7,18 @@ import {
   ScrollView,
   Dimensions,
   Modal,
-  Alert,
   TouchableOpacity,
-  Platform,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ImageBackground } from "react-native";
 import { cores, text } from "../../default_styles";
 import Footer from "../Footer";
-import {
-  ProductCar,
-  minModelCar,
-  minModelPage,
-  minModelPageAno,
-  minProductCarCat,
-  minProductPage,
-} from "../../utils/types";
+import { ProductCar, minProductCarCat } from "../../utils/types";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
-import { Picker } from "@react-native-picker/picker";
-import axios from "axios";
-import { API_URL } from "../../services";
+import { MaterialIcons } from "@expo/vector-icons";
 
 type Props = {
   route: {
@@ -40,7 +28,6 @@ type Props = {
 };
 
 const ProductDetails = ({ route }: Props) => {
-  const { width, height } = Dimensions.get("window");
   const [catModal, setCatModal] = useState(false);
 
   const { navigate } = useNavigation<Nav>();
@@ -128,10 +115,14 @@ const ProductDetails = ({ route }: Props) => {
                     title="Modelos Compatíveis"
                     background={theme.colors.background.secondary}
                     onPress={() =>
-                      navigation.navigate("Models", {
-                        productId: prod.productId,
-                        categoryId: prod.categoryId,
-                      })
+                      navigation.navigate(
+                        "Models",
+                        {
+                          productId: prod.productId,
+                          categoryId: prod.categoryId,
+                        },
+                        setCatModal(!catModal)
+                      )
                     }
                   />
                 </View>

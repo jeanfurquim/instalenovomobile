@@ -9,16 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import BottomTabs from "../../components/BottomTabs";
 import Footer from "../../components/Footer";
-
-import BuscarProd from "../../components/BuscarProd";
-import { cores, temas, text } from "../../default_styles";
-import { ArrowLeftIcon, ArrowRightIcon } from "react-native-heroicons/outline";
+import { cores, text } from "../../default_styles";
+import { ArrowLeftIcon  } from "react-native-heroicons/outline";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import PickerProd from "../../components/PickerProd";
-import DropdownComponent from "../../components/DropdownComponent";
-import { Category, Products } from "../../utils/types";
+import { Category } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
 import { useNavigation } from "@react-navigation/native";
 import { fetchCategory } from "../../services";
@@ -177,7 +172,7 @@ const BuscaProduto = () => {
           }}
         >
           <ImageBackground
-            source={require("../../assets/images/backteste2.jpg")}
+            source={require("../../assets/images/fundo3.jpg")}
             className="p-0 w-full h-full"
           >
             <View className="flex-row flex-1 items-center mb-4 ml-4">

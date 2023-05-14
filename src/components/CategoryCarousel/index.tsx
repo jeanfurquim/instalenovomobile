@@ -2,8 +2,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Category } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
-import axios from "axios";
-import { API_URL, fetchCategory } from "../../services";
+import { fetchCategory } from "../../services";
 import ArrowRightIcon from "react-native-heroicons/outline/ArrowRightIcon";
 import CategoryCarouselCard from "../CategoryCarouselCard";
 

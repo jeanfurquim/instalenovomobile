@@ -17,7 +17,6 @@ import {
   FontAwesome5,
   AntDesign,
 } from "@expo/vector-icons";
-
 import Button from "../Button";
 import { theme } from "../../styled_themes/themes";
 import axios from "axios";
@@ -55,7 +54,7 @@ const ProductCarCard = ({ prodCar }: Props) => {
   }, [prodCar.categoryId, prodCar.modelId, prodCar.combo]);
 
   return (
-    <View className="bg-white justify-center items-center  self-center w-full">
+    <View className="bg-white justify-center items-center  self-center w-full rounded-2xl">
       <View
         style={{
           borderWidth: 1,

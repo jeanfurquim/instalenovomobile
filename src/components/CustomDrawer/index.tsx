@@ -1,15 +1,16 @@
 import { Image, StyleSheet, Text, View, ImageBackground } from "react-native";
 import React from "react";
-import icone from "../assets/images/icon.png";
-
-import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import { text } from "../../default_styles";
 
 const CustomDrawer = (props: any) => {
   return (
     <View className="flex-1">
       <DrawerContentScrollView
-      {...props}
+        {...props}
         contentContainerStyle={{ backgroundColor: "#21283F" }}
       >
         <ImageBackground
@@ -31,8 +32,13 @@ const CustomDrawer = (props: any) => {
         style={{ borderTopWidth: 1, borderTopColor: "#CCC" }}
       >
         <View className="flex-row justify-center items-center">
-          <Image source={require('../../assets/images/icon.png')}className="h-5 w-5 m-2" />
-          <Text style={text.footnote} className='text-black font-bold text-sm '>Soft Eletronica</Text>
+          <Image
+            source={require("../../assets/images/icon.png")}
+            className="h-5 w-5 m-2"
+          />
+          <Text style={text.footnote} className="text-black font-bold text-sm ">
+            Soft Eletronica
+          </Text>
         </View>
       </View>
     </View>

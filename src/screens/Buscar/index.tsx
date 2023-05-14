@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  ScrollView,
-  ImageBackground,
-} from "react-native";
+import { Text, SafeAreaView, ScrollView, ImageBackground } from "react-native";
 import React from "react";
 import { theme } from "./styles";
 import { text } from "../../default_styles";
@@ -16,7 +9,7 @@ const Buscar = () => {
   return (
     <SafeAreaView className="pt-0" style={theme.container}>
       <ImageBackground
-        source={require("../../assets/images/backteste2.jpg")}
+        source={require("../../assets/images/fundo3.jpg")}
         className="p-0 w-full h-full"
       >
         <Text className="text-white text-2xl px-4 mt-3" style={text.headline}>
@@ -24,7 +17,6 @@ const Buscar = () => {
         </Text>
         <ScrollView className="p-3">
           <BuscarCard />
-        
         </ScrollView>
       </ImageBackground>
       <Footer />

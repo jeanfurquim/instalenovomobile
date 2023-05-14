@@ -1,11 +1,9 @@
 import {
-  StyleSheet,
   Text,
   View,
   SafeAreaView,
   ImageBackground,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
@@ -13,8 +11,6 @@ import { Category, minProductPage } from "../../utils/types";
 import axios from "axios";
 import { API_URL } from "../../services";
 import ProductCard from "../../components/ProductCard";
-import { useNavigation } from "@react-navigation/native";
-import CategoryCarousel from "../../components/CategoryCarousel";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import CategoryCarouselCard from "../../components/CategoryCarouselCard";
 import { SpringPage } from "../../services/spring";
@@ -70,7 +66,7 @@ const Produto = ({
     <>
       <SafeAreaView className="flex-1">
         <ImageBackground
-          source={require("../../assets/images/backteste2.jpg")}
+          source={require("../../assets/images/fundo3.jpg")}
           className="p-0 w-full h-full"
         >
           <View className="mt-4">
@@ -123,7 +119,7 @@ const Produto = ({
           <ScrollView
             contentContainerStyle={{
               paddingHorizontal: 5,
-              paddingBottom:100
+              paddingBottom: 100,
             }}
             showsHorizontalScrollIndicator={false}
             className="pt-0"

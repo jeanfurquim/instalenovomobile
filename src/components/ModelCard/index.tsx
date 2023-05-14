@@ -7,12 +7,7 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import {
-  minModelCar,
-  minModelPageAno,
-  minModeloCarAno,
-} from "../../utils/types";
-import { FlatList } from "react-native-gesture-handler";
+import { minModelCar, minModelPageAno } from "../../utils/types";
 import { Image } from "react-native";
 import { text } from "../../default_styles";
 import { API_URL } from "../../services";
@@ -182,9 +177,13 @@ const ModelCard = ({ modelCar }: Props) => {
                   title="Buscar"
                   background={theme.colors.background.secondary}
                   onPress={() =>
-                    navigation.navigate("Categorias", {
-                      selectedAno,
-                    })
+                    navigation.navigate(
+                      "Categorias",
+                      {
+                        selectedAno,
+                      },
+                      setCatModal(!catModal)
+                    )
                   }
                 />
               </View>

@@ -1,11 +1,9 @@
 import { Platform, StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Dropdown } from "react-native-element-dropdown";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Category, Products } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
-import { API_URL, fetchCategory } from "../../services";
-import axios from "axios";
+import { fetchCategory } from "../../services";
 import { Picker } from "@react-native-picker/picker";
 import { text } from "../../default_styles";
 import { theme } from "../../styled_themes/themes";

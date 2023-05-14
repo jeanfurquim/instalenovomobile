@@ -12,19 +12,11 @@ import eletricista from "../../assets/images/eletricista.png";
 import icone from "../../assets/images/icon.png";
 import { cores, temas, text } from "../../default_styles/index";
 import useTheme from "../../hooks/useThemes";
-import {
-  CarouselSlide,
-  CarouselWrapper,
-  Container,
-  Dot,
-  DotsWrapper,
-  FooterWrapper,
-} from "./styles";
+import { CarouselSlide, Dot, DotsWrapper, FooterWrapper } from "./styles";
 import { carouselData } from "../../utils/carouselData";
-import Body from "../../components/texts/Body";
 import Button from "../../components/Button";
 import { useNavigation } from "@react-navigation/native";
-import { NavigationContainer } from "@react-navigation/native";
+
 
 const carouselSlideWidth = Dimensions.get("window").width;
 

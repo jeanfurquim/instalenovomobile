@@ -21,7 +21,7 @@ const ProductCard = ({ prod }: Props) => {
 
   return (
     <TouchableOpacity
-      className="bg-white shadow flex-row mb-0 mt-2 justify-around "
+      className="bg-white shadow flex-row mb-0 mt-2 justify-around rounded-2xl "
       activeOpacity={0.7}
       onPress={() => handlePress(prod)}
     >

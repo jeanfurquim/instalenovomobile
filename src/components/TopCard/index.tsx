@@ -44,7 +44,7 @@ const TopCard = ({ prod }: Props) => {
   return (
     <>
       <TouchableOpacity
-        className="bg-white mr-3 shadow"
+        className="bg-white mr-3 shadow rounded-2xl"
         onPress={() => setCatModal(!catModal)}
       >
         <Image

@@ -4,35 +4,22 @@ import {
   SafeAreaView,
   ImageBackground,
   View,
-  ScrollView,
   FlatList,
   TouchableOpacity,
   Modal,
-  TextInput,
 } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
-
 import Footer from "../../components/Footer";
 import { cores, text } from "../../default_styles";
-import {
-  ProductCar,
-  Products,
-  minModelCar,
-  minModelPage,
-  minProductCarCat,
-  minProductPage,
-} from "../../utils/types";
-import { SpringPage } from "../../services/spring";
+import { Products, minModelCar, minModelPage } from "../../utils/types";
 import axios, { AxiosRequestConfig } from "axios";
 import { API_URL, requestBackend } from "../../services";
 import ModelCard from "../../components/ModelCard";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { Picker } from "@react-native-picker/picker";
 import { Platform } from "react-native";
-import Button from "../../components/Button";
-import { theme } from "../../styled_themes/themes";
 import SearchInput from "../../components/SearchInput";
 
 type Props = {
@@ -65,7 +52,6 @@ const Model = ({ route }: Props) => {
     empty: true,
   });
 
-  
   async function listModels() {
     const res = await axios.get(
       `${API_URL}/productscar/carporcat?productId=${productId}&categoryId=${categoryId}&size=${perPage}`
@@ -128,13 +114,11 @@ const Model = ({ route }: Props) => {
 
   const navigation = useNavigation<any>();
 
-
-
   return (
     <>
       <SafeAreaView className="flex-1">
         <ImageBackground
-          source={require("../../assets/images/backteste2.jpg")}
+          source={require("../../assets/images/fundo3.jpg")}
           className="p-0 w-full h-full"
         >
           <View
@@ -337,12 +321,9 @@ const Model = ({ route }: Props) => {
                     placeholder="Nome do modelo"
                     search={search}
                     setSearch={setSearch}
-                    
                   />
                 </View>
-                <TouchableOpacity
-                onPress={()=>setSearch('')}
-                >
+                <TouchableOpacity onPress={() => setSearch("")}>
                   <View>
                     <Text className="text-white text-lg" style={text.headline}>
                       Limpar

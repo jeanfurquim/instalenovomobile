@@ -1,26 +1,9 @@
-import {
-  Modal,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import {
-  Category,
-  ProductCar,
-  minModelCar,
-  minModelPageAno,
-  minModeloCarAno,
-} from "../../utils/types";
-import { FlatList } from "react-native-gesture-handler";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { ProductCar } from "../../utils/types";
 import { Image } from "react-native";
 import { text } from "../../default_styles";
-import { API_URL } from "../../services";
-import axios from "axios";
-import { Picker } from "@react-native-picker/picker";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import Button from "../Button";
 import { theme } from "../../styled_themes/themes";
@@ -35,10 +18,8 @@ const ModelCard = ({ category }: Props) => {
 
   return (
     <View
-      className="mt-4 mb-4 ml-3 justify-center items-center self-center w-40  bg-white shadow-lg"
+      className="mt-4 mb-4 ml-3 justify-center items-center self-center w-40  bg-white shadow-lg rounded-2xl"
       style={{ elevation: 10 }}
-    
-    
     >
       <View
         className="flex-row justify-center p-1 self-center items-center mt-2"
@@ -74,6 +55,12 @@ const ModelCard = ({ category }: Props) => {
         >
           {category.modelName}
         </Text>
+        <Text
+          className="text-xs text-center self-center ml-1"
+          style={text.footnote}
+        >
+          {category.modelYear}
+        </Text>
       </View>
       {category.portaD === null ? (
         <View>
@@ -86,10 +73,9 @@ const ModelCard = ({ category }: Props) => {
                   modelId: category.modelId,
                   categoryId: category.categoryId,
                   vc: category.vc,
-                  combo:category.combo
+                  combo: category.combo,
                 })
               }
-              
             />
           </View>
         </View>
@@ -136,12 +122,16 @@ const ModelCard = ({ category }: Props) => {
                     title="2 Vidros"
                     background={theme.colors.background.secondary}
                     onPress={() =>
-                      navigation.navigate("Produtos Car", {
-                        modelId: category.modelId,
-                        categoryId: category.categoryId,
-                        vc: 2,
-                        combo:category.combo
-                      },  setCatModal(!catModal))
+                      navigation.navigate(
+                        "Produtos Car",
+                        {
+                          modelId: category.modelId,
+                          categoryId: category.categoryId,
+                          vc: 2,
+                          combo: category.combo,
+                        },
+                        setCatModal(!catModal)
+                      )
                     }
                   />
                 </View>
@@ -150,12 +140,16 @@ const ModelCard = ({ category }: Props) => {
                     title="4 Vidros"
                     background={theme.colors.background.secondary}
                     onPress={() =>
-                      navigation.navigate("Produtos Car", {
-                        modelId: category.modelId,
-                        categoryId: category.categoryId,
-                        vc: 4,
-                        combo:category.combo
-                      },  setCatModal(!catModal))
+                      navigation.navigate(
+                        "Produtos Car",
+                        {
+                          modelId: category.modelId,
+                          categoryId: category.categoryId,
+                          vc: 4,
+                          combo: category.combo,
+                        },
+                        setCatModal(!catModal)
+                      )
                     }
                   />
                 </View>
@@ -167,12 +161,16 @@ const ModelCard = ({ category }: Props) => {
                     title="2 Portas"
                     background={theme.colors.background.secondary}
                     onPress={() =>
-                      navigation.navigate("Produtos Car", {
-                        modelId: category.modelId,
-                        categoryId: category.categoryId,
-                        vc: 2,
-                        combo:category.combo
-                      })
+                      navigation.navigate(
+                        "Produtos Car",
+                        {
+                          modelId: category.modelId,
+                          categoryId: category.categoryId,
+                          vc: 2,
+                          combo: category.combo,
+                        },
+                        setCatModal(!catModal)
+                      )
                     }
                   />
                 </View>
@@ -181,12 +179,16 @@ const ModelCard = ({ category }: Props) => {
                     title="4 Portas"
                     background={theme.colors.background.secondary}
                     onPress={() =>
-                      navigation.navigate("Produtos Car", {
-                        modelId: category.modelId,
-                        categoryId: category.categoryId,
-                        vc: 4,
-                        combo:category.combo
-                      })
+                      navigation.navigate(
+                        "Produtos Car",
+                        {
+                          modelId: category.modelId,
+                          categoryId: category.categoryId,
+                          vc: 4,
+                          combo: category.combo,
+                        },
+                        setCatModal(!catModal)
+                      )
                     }
                   />
                 </View>

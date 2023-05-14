@@ -1,6 +1,5 @@
-import { View, Text, ButtonProps } from "react-native";
+import { ButtonProps } from "react-native";
 import React, { ReactNode } from "react";
-
 import { Container, IconWrapper, Wrapper } from "./styles";
 import Headline from "../texts/Headline";
 import useTheme from "../../hooks/useThemes";

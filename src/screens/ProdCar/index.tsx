@@ -12,14 +12,12 @@ import Footer from "../../components/Footer";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { cores, text } from "../../default_styles";
 import { useNavigation } from "@react-navigation/native";
-import { ProductCar, ProductPage } from "../../utils/types";
+import { ProductPage } from "../../utils/types";
 import axios from "axios";
-
 import { API_URL } from "../../services";
 import { ScrollView } from "react-native-gesture-handler";
 import ProductCarCard from "../../components/ProductCarCard";
-import { SpringPage } from "../../services/spring";
-import { CarouselSlide, Dot, DotProd, DotsWrapper } from "../Home/styles";
+import { CarouselSlide, DotProd, DotsWrapper } from "../Home/styles";
 
 type Props = {
   route: {
@@ -80,7 +78,7 @@ const ProdCard = ({ route }: Props) => {
     <>
       <SafeAreaView className="flex-1">
         <ImageBackground
-          source={require("../../assets/images/backteste2.jpg")}
+          source={require("../../assets/images/fundo3.jpg")}
           className="p-0 w-full h-full"
         >
           <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>

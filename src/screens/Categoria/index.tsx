@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 import Footer from "../../components/Footer";
-import { SpringPage } from "../../services/spring";
 import { ProductCar } from "../../utils/types";
 import { API_URL } from "../../services";
 import axios from "axios";
@@ -53,7 +52,6 @@ const Categoria = ({ route }: Props) => {
   }
 
   useEffect(() => {
-    
     listCategory();
   }, [selectedAno]);
 
@@ -61,7 +59,7 @@ const Categoria = ({ route }: Props) => {
     <>
       <SafeAreaView className="flex-1">
         <ImageBackground
-          source={require("../../assets/images/backteste2.jpg")}
+          source={require("../../assets/images/fundo3.jpg")}
           className="p-0 w-full h-full"
         >
           <View

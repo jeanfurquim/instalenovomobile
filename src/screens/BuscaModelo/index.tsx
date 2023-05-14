@@ -6,37 +6,20 @@ import {
   ImageBackground,
   ScrollView,
   Platform,
-  Modal,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import BottomTabs from "../../components/BottomTabs";
 import Footer from "../../components/Footer";
-
-import BuscarProd from "../../components/BuscarProd";
-import { cores, temas, text } from "../../default_styles";
-import { ArrowLeftIcon, ArrowRightIcon } from "react-native-heroicons/outline";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import PickerProd from "../../components/PickerProd";
-import DropdownComponent from "../../components/DropdownComponent";
-import {
-  Category,
-  Manufacturer,
-  Model,
-  Products,
-  minModelCarAno,
-  minModelPageAno,
-  minProductCarCat,
-} from "../../utils/types";
+import { cores, text } from "../../default_styles";
+import { ArrowLeftIcon } from "react-native-heroicons/outline";
+import { Manufacturer, Model, minModelCarAno } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
 import { useNavigation } from "@react-navigation/native";
-import { API_URL, fetchCategory, fetchManuf } from "../../services";
+import { API_URL, fetchManuf } from "../../services";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../../components/Button";
 import { theme } from "../../styled_themes/themes";
 import { TouchableOpacity } from "react-native";
 import axios from "axios";
-import { MaterialIcons } from "@expo/vector-icons";
-
 import { Feather } from "@expo/vector-icons";
 
 const BuscaModelo = () => {
@@ -59,9 +42,6 @@ const BuscaModelo = () => {
 
   const [catYear, setCatYear] = useState<SpringPage<Model>>();
   const [selectedYear, setSelectedYear] = useState("");
-  const [catModal, setCatModal] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
- 
 
   const { navigate } = useNavigation<Nav>();
   type Nav = {
@@ -123,7 +103,7 @@ const BuscaModelo = () => {
           }}
         >
           <ImageBackground
-            source={require("../../assets/images/backteste2.jpg")}
+            source={require("../../assets/images/fundo3.jpg")}
             className="p-0 w-full h-full"
           >
             <ScrollView contentContainerStyle={{ paddingBottom: 50 }}>
@@ -301,8 +281,6 @@ const BuscaModelo = () => {
           </ImageBackground>
         </SafeAreaView>
         <Footer />
-
-      
       </>
     );
   } else {
@@ -374,7 +352,11 @@ const BuscaModelo = () => {
                           }}
                           style={{ color: "#FFF" }}
                         >
-                          <Picker.Item label="Escolha uma montadora" value="" style={{fontSize:16}}/>
+                          <Picker.Item
+                            label="Escolha uma montadora"
+                            value=""
+                            style={{ fontSize: 16 }}
+                          />
                           {manu?.content.map((c) => {
                             return (
                               <Picker.Item
