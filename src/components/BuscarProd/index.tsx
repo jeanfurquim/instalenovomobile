@@ -9,25 +9,16 @@ import { text } from "../../default_styles";
 import { theme } from "../../styled_themes/themes";
 import Button from "../../components/Button";
 
-interface CategoryProps{
-  id:Number;
-  name:String;
-  image:String
-}
-
-const BuscarProd = ({id, name, image}:CategoryProps) => {
-  
-
+const BuscarProd = () => {
   const [cat, setCat] = useState<SpringPage<Category>>();
   const [selectedCategory, setSelectedCategory] = useState([
     "Escolha uma Categoria ...",
   ]);
-  const [isFocus, setIsFocus] = useState(false);
-
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;
   };
+
   useEffect(() => {
     fetchCategory().then((category) => {
       setCat(category);
@@ -37,7 +28,6 @@ const BuscarProd = ({id, name, image}:CategoryProps) => {
   const handlePress = (prod: Products) => {
     navigate("Produtos");
   };
-
 
   if (Platform.OS === "ios") {
     return (
@@ -64,26 +54,21 @@ const BuscarProd = ({id, name, image}:CategoryProps) => {
             onValueChange={(itemValue, itemIndex) =>
               setSelectedCategory(itemValue)
             }
-            itemStyle={{color:'#FFF', fontSize:16, fontWeight:"700"}}
-            style={{color:'#FFF', height:150}}
+            itemStyle={{ color: "#FFF", fontSize: 16, fontWeight: "700" }}
+            style={{ color: "#FFF", height: 150 }}
           >
             <Picker.Item label="Escolha uma categoria" value="categoria" />
             {cat?.content.map((c) => {
               return (
-                <Picker.Item
-                  label={`${c.name}`}
-                  value={c.id}
-                  key={c.id}
-           
-                />
+                <Picker.Item label={`${c.name}`} value={c.id} key={c.id} />
               );
             })}
           </Picker>
-          <View className="mt-10 mb-4" >
+          <View className="mt-10 mb-4">
             <Button
               title="Buscar"
               background={theme.colors.background.secondary}
-              onPress={() =>handlePress}
+              onPress={() => handlePress}
             />
           </View>
         </View>
@@ -122,7 +107,6 @@ const BuscarProd = ({id, name, image}:CategoryProps) => {
               marginBottom: 10,
             }}
             dropdownIconColor="#FFF"
-          
           >
             <Picker.Item
               label="Escolha uma Categoria.."
@@ -154,7 +138,7 @@ const BuscarProd = ({id, name, image}:CategoryProps) => {
             <Button
               title="Buscar"
               background={theme.colors.background.secondary}
-              onPress={() =>handlePress}
+              onPress={() => handlePress}
             />
           </View>
         </View>

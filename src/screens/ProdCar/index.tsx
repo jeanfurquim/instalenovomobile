@@ -21,7 +21,7 @@ import { CarouselSlide, DotProd, DotsWrapper } from "../Home/styles";
 
 type Props = {
   route: {
-    params: { modelId; categoryId; vc; combo };
+    params: { modelId: any; categoryId: any; vc: any; combo: any };
   };
 };
 
@@ -31,8 +31,7 @@ const ProdCard = ({ route }: Props) => {
   const navigation = useNavigation<any>();
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [carouselRef, setCarouselRef] = useState<ScrollView | null>(null);
-  const { modelId, categoryId, vc, combo } = route.params;
-
+  const { modelId, categoryId, vc } = route.params;
   const [product, setProduct] = useState<ProductPage>({
     content: [],
     last: true,

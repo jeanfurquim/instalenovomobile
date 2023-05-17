@@ -11,7 +11,7 @@ import {
 import React, { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 import { cores, text } from "../../default_styles";
-import { ArrowLeftIcon  } from "react-native-heroicons/outline";
+import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Category } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
@@ -25,8 +25,6 @@ const BuscaProduto = () => {
   const navigation = useNavigation<any>();
   const [cat, setCat] = useState<SpringPage<Category>>();
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [isFocus, setIsFocus] = useState(false);
-
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;

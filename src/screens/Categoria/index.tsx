@@ -7,7 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import { ProductCar } from "../../utils/types";
 import { API_URL } from "../../services";
@@ -26,7 +26,6 @@ type Props = {
 const Categoria = ({ route }: Props) => {
   const [category, setCategory] = useState<ProductCar>();
   const { selectedAno } = route.params;
-
   const navigation = useNavigation<any>();
 
   function removeDuplicates(data: any, prop: any) {

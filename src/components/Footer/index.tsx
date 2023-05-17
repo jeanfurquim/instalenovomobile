@@ -6,9 +6,6 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 
 const Footer = () => {
   const route = useRoute();
-
-  const navigation = useNavigation();
-
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;

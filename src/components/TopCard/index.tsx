@@ -26,7 +26,7 @@ type Props = {
 
 const TopCard = ({ prod }: Props) => {
   const [catModal, setCatModal] = useState(false);
-  const [selectedAno, setSelectedAno] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("")
   const [cat, setCat] = useState<SpringPage<ProductCar>>();
   const navigation = useNavigation<any>();
 
@@ -91,9 +91,9 @@ const TopCard = ({ prod }: Props) => {
             </View>
             {Platform.OS === "android" ? (
               <Picker
-                selectedValue={selectedAno}
+                selectedValue={selectedCategory}
                 onValueChange={(itemValue, itemIndex) =>
-                  setSelectedAno(itemValue)
+                  setSelectedCategory(itemValue)
                 }
                 itemStyle={{
                   color: "#000",
@@ -125,18 +125,18 @@ const TopCard = ({ prod }: Props) => {
               </Picker>
             ) : (
               <Picker
-                selectedValue={selectedAno}
+                selectedValue={selectedCategory}
                 onValueChange={(itemValue, itemIndex) =>
-                  setSelectedAno(itemValue)
+                  setSelectedCategory(itemValue)
                 }
                 itemStyle={{
                   color: "#FFF",
                   fontSize: 12,
                   fontWeight: "700",
                 }}
-                style={{ color: "#FFF", height: 150, marginBottom:10 }}
+                style={{ color: "#FFF", height: 150, marginBottom: 10 }}
               >
-                <Picker.Item label="Selecione o Ano" value="" />
+                <Picker.Item label="Selecione a Categoria" value="0" />
                 {cat?.content.map((m) => {
                   return (
                     <Picker.Item
@@ -149,15 +149,20 @@ const TopCard = ({ prod }: Props) => {
               </Picker>
             )}
 
-            {selectedAno !== "" ? (
+            {selectedCategory !== ""? (
               <View className="mt-2 w-[50%] self-center">
                 <Button
                   title="Buscar"
                   background={theme.colors.background.secondary}
                   onPress={() =>
-                    navigation.navigate("Produto", {
-                      selectedCategory: selectedAno,
-                    })
+                    navigation.navigate(
+                      "Produtos Top",
+                      {
+                        selectedCategory: selectedCategory,
+                        productId: prod.productId,
+                      },
+                      setCatModal(!catModal)
+                    )
                   }
                 />
               </View>

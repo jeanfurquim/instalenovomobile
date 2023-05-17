@@ -24,7 +24,7 @@ import SearchInput from "../../components/SearchInput";
 
 type Props = {
   route: {
-    params: { productId; categoryId };
+    params: { productId: any; categoryId: any };
   };
   modelProps: minModelCar;
 };
@@ -39,7 +39,6 @@ const Model = ({ route }: Props) => {
   const [selectedMontadora, setSelectedMontadora] =
     useState("Todas montadoras");
   const [search, setSearch] = useState("");
-
   const [page, setPage] = useState<minModelPage>({
     content: [],
     last: true,

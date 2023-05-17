@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import eletricista from "../../assets/images/eletricista.png";
 import icone from "../../assets/images/icon.png";
-import { cores, temas, text } from "../../default_styles/index";
+import { temas, text } from "../../default_styles/index";
 import useTheme from "../../hooks/useThemes";
 import { CarouselSlide, Dot, DotsWrapper, FooterWrapper } from "./styles";
 import { carouselData } from "../../utils/carouselData";
@@ -23,14 +23,10 @@ const carouselSlideWidth = Dimensions.get("window").width;
 const Home = () => {
   const theme = useTheme();
   const [carouselIndex, setCarouselIndex] = useState(0);
-
-  const navigation = useNavigation();
-
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;
   };
-
   const [carouselRef, setCarouselRef] = useState<ScrollView | null>(null);
 
   function handleCarouselSlide() {

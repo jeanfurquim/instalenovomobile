@@ -39,10 +39,8 @@ const BuscaModelo = () => {
     numberOfElements: 0,
     empty: true,
   });
-
   const [catYear, setCatYear] = useState<SpringPage<Model>>();
   const [selectedYear, setSelectedYear] = useState("");
-
   const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;

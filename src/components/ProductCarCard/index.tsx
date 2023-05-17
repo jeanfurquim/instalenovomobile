@@ -84,7 +84,7 @@ const ProductCarCard = ({ prodCar }: Props) => {
         <View className="mb-4 p-2" style={{backgroundColor:'#ee9f27'}}>
           {comb.content.map((c) => (
             <View key={c.id}>
-              <Text className="text-white font-bold"style={text.headline}>Adicionar {c.productName} --></Text>
+              <Text className="text-white font-bold"style={text.headline}>Adicionar {c.productName} --{`>`} </Text>
                
             </View>
           ))}

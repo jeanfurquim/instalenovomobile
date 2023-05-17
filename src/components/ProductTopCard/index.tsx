@@ -9,26 +9,29 @@ import {
   Modal,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageBackground } from "react-native";
 import { cores, text } from "../../default_styles";
 import Footer from "../Footer";
-import { ProductCar, minProductCarCat } from "../../utils/types";
-import Button from "../../components/Button";
+import {
+  ProductCar,
+  minProductCarCat,
+  minProductPage,
+} from "../../utils/types";
+import Button from "../Button";
 import { theme } from "../../styled_themes/themes";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { API_URL } from "../../services";
+import axios from "axios";
 
 type Props = {
-  route: {
-    params: { prod: minProductCarCat };
-  };
-  car: ProductCar;
+  prod: minProductCarCat;
 };
 
-const ProductDetails = ({ route }: Props) => {
-  const [catModalPD, setCatModalPD] = useState(false);
+const ProductTopCard = ({ prod }: Props) => {
+  const [catModal, setCatModal] = useState(false);
 
   const { navigate } = useNavigation<Nav>();
   type Nav = {
@@ -36,17 +39,15 @@ const ProductDetails = ({ route }: Props) => {
   };
   const navigation = useNavigation<any>();
 
-  const { prod } = route.params;
-
   return (
     <>
-      <SafeAreaView>
+      <View>
         <ImageBackground
           source={require("../../assets/images/fundo3.jpg")}
           className="p-0 w-full h-full"
         >
           <View className="bg-white">
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity onPress={() => navigate("Buscar")}>
               <View
                 className="w-8 h-8 items-center justify-center mt-2 ml-2 rounded-full"
                 style={{ backgroundColor: cores.secondary }}
@@ -69,7 +70,7 @@ const ProductDetails = ({ route }: Props) => {
           <ScrollView
             contentContainerStyle={{
               paddingHorizontal: 0,
-              paddingBottom: 50,
+              paddingBottom: 10,
             }}
             showsHorizontalScrollIndicator={false}
             className="pt-0"
@@ -102,12 +103,12 @@ const ProductDetails = ({ route }: Props) => {
                   </Text>
                 </View>
               </View>
-              <View className=" flex-row items-center self-center mt-8 w-[90%]">
+              <View className=" flex-row items-center self-center mt-5 w-[90%]">
                 <View className="mb-6">
                   <Button
                     title="Inf. Técnicas"
                     background={theme.colors.background.secondary}
-                    onPress={() => setCatModalPD(!catModalPD)}
+                    onPress={() => setCatModal(!catModal)}
                   />
                 </View>
                 <View className="ml-4 mb-6">
@@ -124,11 +125,7 @@ const ProductDetails = ({ route }: Props) => {
                 </View>
               </View>
             </View>
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={catModalPD}
-            >
+            <Modal animationType="slide" transparent={true} visible={catModal}>
               <View
                 style={{
                   flex: 1,
@@ -143,7 +140,7 @@ const ProductDetails = ({ route }: Props) => {
                     bottom: 0,
                   }}
                 >
-                  <TouchableOpacity onPress={() => setCatModalPD(!catModalPD)}>
+                  <TouchableOpacity onPress={() => setCatModal(!catModal)}>
                     <View className="w-10 h-10 justify-center self-center items-center mb-3 mt-2 rounded-full bg-black">
                       <MaterialIcons name="close" size={36} color="white" />
                     </View>
@@ -168,12 +165,9 @@ const ProductDetails = ({ route }: Props) => {
             </Modal>
           </ScrollView>
         </ImageBackground>
-      </SafeAreaView>
-      <Footer />
+      </View>
     </>
   );
 };
 
-export default ProductDetails;
-
-const styles = StyleSheet.create({});
+export default ProductTopCard;

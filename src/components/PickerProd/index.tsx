@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Modal, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { Category } from "../../utils/types";
 import { SpringPage } from "../../services/spring";
 import { fetchCategory } from "../../services";
@@ -11,11 +10,7 @@ import { Alert } from "react-native/Libraries/Alert/Alert";
 const PickerProd = () => {
   const [cat, setCat] = useState<SpringPage<Category>>();
   const [selectedCategory, setSelectedCategory] = useState(["categoria"]);
-  const [isFocus, setIsFocus] = useState(false);
-
   const [catModal, setCatModal] = useState(false);
-
-  const { navigate } = useNavigation<Nav>();
   type Nav = {
     navigate: (value: string) => void;
   };

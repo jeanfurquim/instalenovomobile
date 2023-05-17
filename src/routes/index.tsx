@@ -3,23 +3,21 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import Buscar from "../screens/Buscar";
-import BottomTabs from "../components/BottomTabs";
 import BuscaProduto from "../screens/BuscaProduto";
 import icone from "../assets/images/icon.png";
 
 import { cores, text } from "../default_styles";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import Suporte from "../screens/Suporte";
-import SelectModelo from "../screens/SelectModelo";
+
 import CustomDrawer from "../components/CustomDrawer";
 import Produto from "../screens/Produto";
 import ProductDetails from "../components/ProductDetails";
 import Model from "../screens/Model";
 import Categoria from "../screens/Categoria";
-import ProductCard from "../screens/ProdCar";
 import ProdCard from "../screens/ProdCar";
 import BuscaModelo from "../screens/BuscaModelo";
+import ProdutoTop from "../screens/ProdutoTop";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,6 +82,14 @@ const Routes: React.FC = () => {
             drawerItemStyle: { height: 0 },
           }}
         />
+
+        <Drawer.Screen
+          name="Produtos Top"
+          component={ProdutoTop}
+          options={{
+            drawerItemStyle: { height: 0 },
+          }}
+        />
         <Drawer.Screen
           name="Categorias"
           component={Categoria}
@@ -102,18 +108,5 @@ const Routes: React.FC = () => {
     </NavigationContainer>
   );
 };
-
-/*const AuxRoutes: React.FC = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{ headerShown: false }}
-      />
-   
-    </Stack.Navigator>
-  );
-}*/
 
 export default Routes;
